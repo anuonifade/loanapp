@@ -10,14 +10,12 @@ Rails.application.routes.draw do
   get 'sessions/destroy'
 
   resources :users
-
-  get 'dashboard' => 'dashboard#index'
-  get 'dashboard' => 'dashboard#'
+    get 'dashboard' => 'dashboard#index'
 
   controller :sessions do
-    get 'login' => :new
-    post 'login' => :create
-    delete 'logout' => :destroy
+    get "login" => :new
+    post "login" => :create
+    get "logout" => :destroy
   end
 
   root 'dashboard#index'

@@ -1,0 +1,41 @@
+<ul id="dropdown1" class="dropdown-content">
+  <li><a href="<%= logout_path %>">Logout</a></li>
+</ul>
+<nav class="app-header">
+  <div class="nav-wrapper">
+    <div class="left">
+      <div class="logo">
+        <a href="#">
+          <%= image_tag("logo.png", :style => "width:35px; height: auto;") %>
+        </a>
+      </div>
+      <div class="app-name">
+        <h1 style="">Loan App</h1>
+      </div>
+    </div>
+
+    <ul id="nav-mobile" class="right">
+      <li>
+          <%= form_tag index_path, method: "get", class: "form-inline"  do %>
+            <%= text_field_tag :search, params[:search], class: "form-control searchbar", placeholder: "Search by name or email..." %>
+            <% submit_tag "", name: nil%>
+          <% end %>
+      </li>
+      <li>
+        <%= button_tag "", class: "clear" do %>
+          <i class="material-icons delete-icon">clear</i>
+        <% end %>
+      </li>
+      <li>
+        <img src= "<%= session[:current_user_info][:picture] %>"
+             alt= "avatar" class="avatar" style="border-radius: 50%; border: 2px solid #6E87EE;"/>
+      </li>
+      <li>
+        <a class="dropdown-button" href="#!" data-activates="dropdown1" style="height: 57px;">
+          <%= session[:current_user_info][:name] %>
+          <i class="material-icons right">arrow_drop_down</i>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
