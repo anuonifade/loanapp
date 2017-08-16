@@ -1,6 +1,25 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-body {
-  background-color: #00BCD4;
- }
+.login-page {
+  background-color: #008080 !important;
+  background-size: cover;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 !important;
+
+  .login-box {
+    margin: 0;
+    form {
+      height: 100%;
+    }
+
+    @media screen and (max-width : 600px), (orientation : portrait) {
+      height: 70%;
+      min-width: 90%;
+    }
+  }
+}

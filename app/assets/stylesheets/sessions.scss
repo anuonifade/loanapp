@@ -1,7 +1,7 @@
 @import "puffly";
 
 .flash-message {
-  width: 50em;
+  width: 100em;
   font-weight: 300;
   margin: 0 auto;
   text-align: center;
@@ -12,7 +12,7 @@
   position: absolute !important;
   padding: 10px;
   left:50% !important;
-  bottom: 45%;
+  bottom: 90%;
   transform: translate(-50%, 0);
   font-size: .9em !important;
 }

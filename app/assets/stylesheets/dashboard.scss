@@ -1,3 +1,11 @@
 // Place all the styles related to the Dashboard controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+html {
+  background: rgb(245, 245, 245);
+}
+.navbar-brand {
+  padding: 0 !important;
+  height: auto !important;
+}

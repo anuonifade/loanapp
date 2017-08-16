@@ -1,3 +1,5 @@
+require 'jwt'
+
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :authenticate
@@ -6,24 +8,16 @@ class ApplicationController < ActionController::Base
   protected
   
   def authenticate
-    if cookies["jwt"]
-      begin
-        token = cookies["jwt"]
-        hmac_secret = Figaro.env.jwt_secret
-        decoded_token = JWT.decode token, hmac_secret, true, { :algorithm => 'HS256' }
-        authorize decoded_token
-      rescue JWT::ExpiredSignature
-        reset_session
-        redirect_to login_url
-      end
+    if cookies[:user_info]
+      user_info = cookies.encrypted[:user_info]
+      authorize user_info
     else
       redirect_to login_url, notice: "You are not authorised"
     end
   end
 
-  def authorize(decoded_token)
-    session[:current_user_info] = decoded_token
-    redirect_to dashboard_url
+  def authorize(user_info)
+    session[:current_user_info] = user_info
   end
 
   def clear_xhr_flash

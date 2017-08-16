@@ -4,21 +4,30 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def new
+    if cookies[:user_info]
+      redirect_to root_url
+    end
     @user = User.new
   end
 
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(user_params)
-    if @user.save
-      secret = Figaro.env.jwt_secret
-      token = JWT.encode user_params, secret, "HS256"
-      cookies["jwt"] = token
-      redirect_to dashboard_url, notice: "Registration Completed. Check your email for the next step"
+    existing_user = User.find_by(email: params[:user][:email])
+
+    if !existing_user
+      @user = User.new(user_params)
+
+      if @user.save
+        flash.now[:notice] = "Registration Completed. Wait for activation"
+        render :action => :new 
+      else
+        render :new 
+        @user.errors
+      end
     else
-      render :new 
-      @user.errors
+      flash[:notice] = "Sorry, user with the same email already exist."
+      redirect_to new_user_url
     end
   end
 

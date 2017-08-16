@@ -1,4 +1,9 @@
 <div class="login-box">
+  <div class="flash-message">
+    <% if flash[:notice] %>
+      <%= content_tag :span, flash[:notice], class: "notice", id: "puffly" %>
+    <% end %>
+  </div>
   <div class="logo">
       <img src="http://res.cloudinary.com/dzwafstu3/image/upload/v1500335660/nnpc/logo.png" />
   </div>
@@ -6,17 +11,6 @@
     <div class="body">
       <%= form_with(model: user, local: true) do |form| %>
         <div class="msg">Register to start applying for loan</div>
-        <% if user.errors.any? %>
-          <div id="error_explanation">
-            <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
-            <ul>
-            <% user.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-            </ul>
-          </div>
-        <% end %>
         <div class="input-group">
           <span class="input-group-addon">
               <i class="material-icons">person</i>

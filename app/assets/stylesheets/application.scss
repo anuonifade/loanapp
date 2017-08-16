@@ -12,13 +12,13 @@
  *= require_tree .
  *= require_self
  */
- @import "plugins/boostrap-theme.css";
- @import "plugins/bootstrap.scss";
- @import "plugins/waves.scss";
- @import "plugins/animate.scss";
- @import "plugins/morris.scss";
- @import "plugins/style.scss";
 
- body {
-  background-color: #00BCD4;
- }
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+.login-page {
+  height: 100%;
+}
