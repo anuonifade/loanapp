@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  resources :contributions
+  resources :loans
+  resources :officers
+  resources :witnesses
+  resources :guarantors
+  resources :bank_details
   resources :roles
   resources :profiles
   resources :loan_types

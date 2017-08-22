@@ -1,0 +1,2 @@
+class WitnessesController < ApplicationController
+end

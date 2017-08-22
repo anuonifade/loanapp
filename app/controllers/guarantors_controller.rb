@@ -1,0 +1,2 @@
+class GuarantorsController < ApplicationController
+end

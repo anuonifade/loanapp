@@ -1,4 +1,4 @@
 class Profile < ApplicationRecord
   belongs_to :user
-  belongs_to :loan_type
+  belongs_to :loan
 end
