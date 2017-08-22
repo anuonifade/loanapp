@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  resources :roles
+  resources :profiles
+  resources :loan_types
   resources :users
     get 'dashboard' => 'dashboard#index'
 
