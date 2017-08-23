@@ -11,6 +11,7 @@ class ApplicationController < ActionController::Base
       user_info = cookies.encrypted[:user_info]
       authorize user_info
     else
+      reset_session
       redirect_to login_url, notice: "You are not authorised"
     end
   end
