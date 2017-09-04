@@ -10,8 +10,10 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *= require_tree .
+ *= require_tree ./plugins
  *= require_self
  */
+@import "puffly";
 
 * {
   box-sizing: border-box;
@@ -23,3 +25,19 @@ body,
   height: 100%;
 }
 
+.flash-message {
+  width: 200em;
+  font-weight: 400;
+  margin: 0 auto;
+  text-align: center;
+  color: #fff;
+}
+#puffly {
+  background-color: #000 !important;
+  position: absolute !important;
+  padding: 20px;
+  right: 2% !important;
+  bottom: 80%;
+  transform: translate(-50%, 0);
+  font-size: 1em !important;
+}

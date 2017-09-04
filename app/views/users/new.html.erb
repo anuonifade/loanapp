@@ -1,3 +1,8 @@
+<div class="flash-message">
+  <% if flash[:notice] %>
+    <%= content_tag :span, flash[:notice], class: "notice", id: "puffly" %>
+  <% end %>
+</div>
 <div class="login-page">
   <%= render "layouts/registerform", user: @user%>
   <%= link_to 'Back', users_path %>

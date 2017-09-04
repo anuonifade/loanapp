@@ -11,6 +11,7 @@ class SessionsController < ApplicationController
     user = User.find_by_email(params[:email])
     if user && user.authenticate(params[:password])
       cookies.encrypted[:user_info] = user
+      flash[:notice] = "Login Successful"
       redirect_to dashboard_url
     else
       redirect_to login_url, alert: "Invalid Email or Password"
@@ -18,7 +19,8 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    sessions_reset
+    reset_session
+    cookies.delete :user_info, domain: request.domain
     redirect_to login_url, alert: "Successfully logged out"
   end
   

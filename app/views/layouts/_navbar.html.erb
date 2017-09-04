@@ -1,0 +1,10 @@
+<% unless admin? %>
+  <div class="menu-navbar">
+    <a href="/">Home</a>
+    <a href="#">Loan Applications</a>
+    <a href="#">Monthly Contributions</a>
+    <a href="#">Profile</a>
+  </div>
+<% else %>
+  <%= render("layouts/navbaradmin") %>
+<% end %>

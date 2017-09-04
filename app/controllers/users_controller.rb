@@ -15,12 +15,13 @@ class UsersController < ApplicationController
   def create
     existing_user = User.find_by(email: params[:user][:email])
 
-    if !existing_user
+    unless existing_user
       @user = User.new(user_params)
 
       if @user.save
-        flash.now[:notice] = "Registration Completed. Wait for activation"
-        render :action => :new 
+        cookies.encrypted[:user_info] = user_params[:email]
+        flash[:notice] = "Registration Successful"
+        redirect_to root_url 
       else
         render :new 
         @user.errors
