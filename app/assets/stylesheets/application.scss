@@ -9,12 +9,11 @@
  * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
- *= require_tree .
- *= require_tree ./plugins
+ *= require_directory .
  *= require_self
  */
-@import "puffly";
 
+@import "puffly";
 * {
   box-sizing: border-box;
 }
@@ -30,8 +29,10 @@ body,
   font-weight: 400;
   margin: 0 auto;
   text-align: center;
-  color: #fff;
+  color: black;
+  background: white;
 }
+
 #puffly {
   background-color: #000 !important;
   position: absolute !important;

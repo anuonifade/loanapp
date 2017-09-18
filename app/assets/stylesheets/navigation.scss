@@ -1,0 +1,64 @@
+.navigation {
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 0;
+  z-index: 1030;
+  background-color: #ffffff;
+  border: 0;
+  -webkit-transition: all .5s ease;
+  transition: all .5s ease;
+  min-height: 60px;
+  box-shadow: 0 0px 24px 0 rgba(0, 0, 0, 0.06), 0 1px 0px 0 rgba(0, 0, 0, 0.02);
+}
+
+.nav-icons {
+  display: inline-block;
+  position: relative;
+  padding: 10px 40px 0 0;
+  color: white;
+  font-size: 18px;
+}
+
+.user-toggle {
+  color: white;
+}
+
+.notification {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 11px;
+  color: red;
+}
+
+.main-navigation {
+  border-bottom: 1px solid #ddd;
+}
+
+.main-navigation .nav-item {
+  font-size: 13px;
+  margin: 8px 20px 5px 0;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.nav-item a {
+  color: #2b3d51;
+}
+
+.dropdown-item {
+  padding: 7px 15px;
+}
+
+.dropdown-item .fa {
+  margin: 0 8px 0 0;
+  color: #adb7be;
+  -webkit-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+  font-size: 16px;
+  vertical-align: middle;
+  line-height: 16px;
+  position: relative;
+  top: -1px;
+}

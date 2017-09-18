@@ -1,0 +1,94 @@
+
+// Colors
+//
+// Grayscale and brand colors for use across Bootstrap.
+
+// Start with assigning color names to specific hex values.
+$white:  #fff !default;
+$black:  #000 !default;
+$red:    #c72422 !default;
+$orange: #e67e22 !default;
+$yellow: #f1c40f !default;
+$green:  #16a085 !default;
+$blue:   #2980b9 !default;
+$teal:   #009999 !default;
+$pink:   #ff5b77 !default;
+$purple: #8956bb !default;
+
+@mixin tiles-colour ($color) {
+  background: $color;
+  &:hover {
+    background: darken($color, 15%);
+  }
+}
+
+a.tiles {
+  color: white;
+  background: $red;
+  padding: 30px;
+  margin-bottom: 30px;
+  -webkit-transition: all .5s ease;
+  height: 185px;
+  transition: all .5s ease;
+
+  hr {
+    border: 1px solid whitesmoke;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+  }
+
+  &.big {
+    height: 400px;
+    padding: 60px;
+  }
+
+  &:hover {
+    color: white;
+    text-decoration: none;
+  }
+
+  &.purple {
+    @include tiles-colour($purple);
+  }
+
+  &.red {
+    @include tiles-colour($red);
+  }
+
+  &.yellow {
+    @include tiles-colour($yellow);
+  }
+
+  &.orange {
+    @include tiles-colour($orange);
+  }
+
+  &.green {
+    @include tiles-colour($green);
+  }
+
+  &.blue {
+    @include tiles-colour($blue);
+  }
+
+  table {
+    margin: 30px 0 0 -15px;
+
+    td, th{ 
+      border: 0 !important;
+      font-size: 1.4em;
+    }
+  }
+
+
+}
+
+.tiles-link {
+  margin-top: 100px;
+  font-size: 1.2rem;
+}
+
+.tiles-icon {
+  font-size: 3em;
+  float: right;
+}
