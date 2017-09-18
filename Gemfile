@@ -43,9 +43,7 @@ gem "animate-rails"
 # For flash messages
 gem "puffly"
 
-
-#gem for waves
-gem "waves-js-rails", "~> 0.7.5"
+gem "font-awesome-rails"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
