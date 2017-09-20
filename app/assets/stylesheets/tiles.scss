@@ -37,6 +37,10 @@ a.tiles {
     margin-bottom: 2rem;
   }
 
+  .card-body {
+    padding: 0 !important;
+  }
+
   &.big {
     height: 400px;
     padding: 60px;

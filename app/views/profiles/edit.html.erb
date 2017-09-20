@@ -1,0 +1,310 @@
+<section class="main-content">
+  <div class="container">
+    <h2 class="page-title">Edit Profile</h2>
+    <div class="card">
+      <div class="card-body p-lg">
+      
+        <form action="" id="profile-form">
+          <div class="row">
+            <div class="col-sm-6">
+                      
+              <section class="profile-content">
+                <h5 class="primary-header">Personal Information</h5>
+                <%# Staff ID %>
+                <div class="form-group row">
+                  <label for="staffID" class="col-sm-4 col-4 col-form-label">Staff ID</label>
+                  <div class="col-sm-7 col-8">
+                    <input type="text" class="form-control" id="staffID" name="staffID" placeholder="Staff ID">
+                  </div>
+                </div>
+                
+                <%# First Name %>
+                <div class="form-group row">
+                  <label for="first_name" class="col-sm-4 col-4 col-form-label">First Name</label>
+                  <div class="col-sm-7 col-8">
+                    <input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name">
+                  </div>
+                </div>
+                
+                <%# Last Name %>
+                <div class="form-group row">
+                  <label for="last_name" class="col-sm-4 col-4 col-form-label">Last Name</label>
+                  <div class="col-sm-7 col-8">
+                    <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last Name">
+                  </div>
+                </div>
+                
+                <%# Date of Birth %>
+                <div class="form-group row">
+                  <label for="dob" class="col-sm-4 col-4 col-form-label">Date of Birth</label>
+                  <div class="col-sm-7 col-8">
+                    <input type="date" class="form-control" id="dob" name="dob" placeholder="MM-DD-YYYY">
+                  </div>
+                </div>
+
+                <%# Gender %>
+                <div class="form-group row">
+                  <label for="gender" class="col-sm-4 col-4 col-form-label">Gender</label>
+                  <div class="col-sm-7 col-8">
+                    <div class="form-check form-check-inline">
+                      <label class="form-check-label">
+                        <input class="form-check-input" type="radio" name="sex" id="male" value="male" checked> Male
+                      </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <label class="form-check-label">
+                        <input class="form-check-input" type="radio" name="sex" id="female" value="female"> Female
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <%# Designation %>
+                <div class="form-group row">
+                  <label for="designation" class="col-sm-4 col-4 col-form-label">Designation</label>
+                  <div class="col-sm-7 col-8">
+                    <input type="text" class="form-control" id="designation" name="designation" placeholder="Designation">
+                  </div>
+                </div> 
+          
+                <%# Email %>
+                <div class="form-group row">
+                  <label for="email" class="col-sm-4 col-4 col-form-label">Email</label>
+                  <div class="col-sm-7 col-8">
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+                  </div>
+                </div>
+                
+                <%# Phone %>
+                <div class="form-group row">
+                  <label for="phone" class="col-sm-4 col-4 col-form-label">Phone</label>
+                  <div class="col-sm-7 col-8">
+                    <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone">
+                  </div>
+                </div>
+              
+                <%# Address 1 %>
+                <div class="form-group row">
+                  <label for="address1" class="col-sm-4 col-4 col-form-label">Address 1</label>
+                  <div class="col-sm-7 col-8">
+                    <input type="text" class="form-control" id="address1" name="address1" placeholder="Address 1">
+                  </div>
+                </div>
+                
+                <%# Address 2 %>
+                <div class="form-group row">
+                  <label for="address2" class="col-sm-4 col-4 col-form-label">Address 2</label>
+                  <div class="col-sm-7 col-8">
+                    <input type="text" class="form-control" id="address2" name="address2" placeholder="Address 2">
+                  </div>
+                </div>
+                
+                <%# State %>
+                <div class="form-group row">
+                  <label for="state" class="col-sm-4 col-4 col-form-label">State</label>
+                  <div class="col-sm-7 col-8">
+                    <input type="text" class="form-control" id="state" name="state" placeholder="State">
+                  </div>
+                </div>
+                
+                <%# Nationality %>
+                <div class="form-group row">
+                  <label for="Nationality" class="col-sm-4 col-4 col-form-label">Nationality</label>
+                  <div class="col-sm-7 col-8">
+                    <input type="text" class="form-control" id="nationality" name="nationality" placeholder="Nationality">
+                  </div>
+                </div>
+              </section>
+            </div>
+
+            <div class="col-sm-6">
+
+              <section class="profile-content">
+                <h5 class="primary-header">Bank Details</h5>
+              
+                <%# Account Name %>
+                <div class="form-group row">
+                  <label for="account_name" class="col-sm-4 col-4 col-form-label">Account Name</label>
+                  <div class="col-sm-7 col-8">
+                    <input type="text" class="form-control" id="account_name" name="account_name" placeholder="Account Name">
+                  </div>
+                </div>
+
+                <%# Account Number %>
+                <div class="form-group row">
+                  <label for="account_no" class="col-sm-4 col-4 col-form-label">Account Number</label>
+                  <div class="col-sm-7 col-8">
+                    <input type="text" class="form-control" id="account_no" name="account_no" placeholder="Account Number">
+                  </div>
+                </div>
+
+                <%# Bank Name %>
+                <div class="form-group row">
+                  <label for="bank" class="col-sm-4 col-4 col-form-label">Bank Name</label>
+                  <div class="col-sm-7 col-8">
+                    <input type="text" class="form-control" id="bank" name="bank" placeholder="Bank Name">
+                  </div>
+                </div>
+                
+                <%# Sort Code %>
+                <div class="form-group row">
+                  <label for="sort_code" class="col-sm-4 col-4 col-form-label">Sort Code</label>
+                  <div class="col-sm-7 col-8">
+                    <input type="text" class="form-control" id="sort_code" name="sort_code" placeholder="Sort Code">
+                  </div>
+                </div>
+                
+              </section>
+
+              <section class="profile-content">
+                <h5 class="primary-header">Next of Kin</h5>
+                        
+                <%# Name %>
+                <div class="form-group row">
+                  <label for="name" class="col-sm-4 col-4 col-form-label">Name</label>
+                  <div class="col-sm-7 col-8">
+                    <input type="text" class="form-control" id="name" name="name" placeholder="First Name">
+                  </div>
+                </div>
+                
+                <%# Email %>
+                <div class="form-group row">
+                  <label for="email" class="col-sm-4 col-4 col-form-label">Email</label>
+                  <div class="col-sm-7 col-8">
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+                  </div>
+                </div>
+                
+                <%# Phone %>
+                <div class="form-group row">
+                  <label for="phone" class="col-sm-4 col-4 col-form-label">Phone</label>
+                  <div class="col-sm-7 col-8">
+                    <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone">
+                  </div>
+                </div>
+                
+                <%# Relationship %>
+                <div class="form-group row">
+                  <label for="relationship" class="col-sm-4 col-4 col-form-label">Relationship</label>
+                  <div class="col-sm-7 col-8">
+                    <input type="text" class="form-control" id="relationship" name="relationship" placeholder="Relationship">
+                  </div>
+                </div>
+                
+                <%# Address %>
+                <div class="form-group row">
+                  <label for="address" class="col-sm-4 col-4 col-form-label">Address</label>
+                  <div class="col-sm-7 col-8">
+                    <textarea class="form-control" id="address" rows="3" name="address" placeholder="Address"></textarea>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-6">
+              <section>
+                <h5 class="primary-header">Guarantor 1 </h5>
+
+                <%# Name %>
+                <div class="form-group row">
+                  <label for="name" class="col-sm-4 col-4 col-form-label">Name</label>
+                  <div class="col-sm-7 col-8">
+                    <input type="text" class="form-control" id="name" name="name" placeholder="First Name">
+                  </div>
+                </div>
+                
+                <%# Email %>
+                <div class="form-group row">
+                  <label for="email" class="col-sm-4 col-4 col-form-label">Email</label>
+                  <div class="col-sm-7 col-8">
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+                  </div>
+                </div>
+                
+                <%# Phone %>
+                <div class="form-group row">
+                  <label for="phone" class="col-sm-4 col-4 col-form-label">Phone</label>
+                  <div class="col-sm-7 col-8">
+                    <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone">
+                  </div>
+                </div>
+                
+                <%# Relationship %>
+                <div class="form-group row">
+                  <label for="relationship" class="col-sm-4 col-4 col-form-label">Relationship</label>
+                  <div class="col-sm-7 col-8">
+                    <input type="text" class="form-control" id="relationship" name="relationship" placeholder="Relationship">
+                  </div>
+                </div>
+                
+                <%# Address %>
+                <div class="form-group row">
+                  <label for="address" class="col-sm-4 col-4 col-form-label">Address</label>
+                  <div class="col-sm-7 col-8">
+                    <textarea class="form-control" id="address" rows="3" name="address" placeholder="Address"></textarea>
+                  </div>
+                </div>
+              </section>
+            </div>
+            <div class="col-sm-6">
+              <section class="profile-content">
+                <h5 class="primary-header">Guarantor 2 </h5>            
+                <%# Name %>
+                <div class="form-group row">
+                  <label for="name" class="col-sm-4 col-4 col-form-label">Name</label>
+                  <div class="col-sm-7 col-8">
+                    <input type="text" class="form-control" id="name" name="name" placeholder="First Name">
+                  </div>
+                </div>
+                
+                <%# Email %>
+                <div class="form-group row">
+                  <label for="email" class="col-sm-4 col-4 col-form-label">Email</label>
+                  <div class="col-sm-7 col-8">
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+                  </div>
+                </div>
+                
+                <%# Phone %>
+                <div class="form-group row">
+                  <label for="phone" class="col-sm-4 col-4 col-form-label">Phone</label>
+                  <div class="col-sm-7 col-8">
+                    <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone">
+                  </div>
+                </div>
+                
+                <%# Relationship %>
+                <div class="form-group row">
+                  <label for="relationship" class="col-sm-4 col-4 col-form-label">Relationship</label>
+                  <div class="col-sm-7 col-8">
+                    <input type="text" class="form-control" id="relationship" name="relationship" placeholder="Relationship">
+                  </div>
+                </div>
+                
+                <%# Address %>
+                <div class="form-group row">
+                  <label for="address" class="col-sm-4 col-4 col-form-label">Address</label>
+                  <div class="col-sm-7 col-8">
+                    <textarea class="form-control" id="address" rows="3" name="address" placeholder="Address"></textarea>
+                  </div>
+                </div>
+                
+              </section>
+            </div>
+          </div>
+
+          <%# Submit Button %>
+          <div class="form-group row">
+            <div class="col-sm-12">
+              <input type="submit" value="Submit Profile" class="btn btn-secondary 1 btn-lg">
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</section>
+
