@@ -1,3 +1,5 @@
+@import "plugins/bootstrap/custom";
+
 body {
   padding-top: 130px;
   padding-bottom: 60px;
@@ -9,6 +11,37 @@ body {
   background-color: #eceff4;
 }
 
+.card-body {
+  padding: 30px;
+}
+
+.page-title {
+  font-size: 1.75em;
+  margin-bottom: 0.8em;
+}
+
+table.borderless {
+  margin-bottom: 30px;
+  td, th{ 
+    border: 0 !important;
+    padding: 7px 0;
+  }
+}
+
 .btn-secondary {
   color: white !important;
+}
+
+.p-lg {
+  padding: 60px;
+}
+
+.primary-header {
+  color: $blue;
+  font-weight: bold;
+  margin-bottom: 1em;
+}
+
+.text-dimmed {
+  color: #ccc;
 }
