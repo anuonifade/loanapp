@@ -43,3 +43,24 @@ body,
   transform: translate(-50%, 0);
   font-size: 1em !important;
 }
+
+.card-table, .table-money-holder {
+  height: 400px;
+  border: 1px solid #ddd;  
+  overflow-y: scroll;
+}
+
+.table-money-holder {
+  height: 320px;
+  border: 0;
+  overflow-y: scroll;
+}
+
+.money-content {
+  font-size: 1.2em;
+}
+
+.table-money {
+  border: 1px solid #ddd;
+  margin-bottom: 0;
+}
