@@ -10,7 +10,7 @@
     <div class="row">
 
       <div class="col-md-6">
-        <a class="card tiles red big" href="#">
+        <%= link_to contributions_path, class: "card tiles red big" do %>
           <div class="card-body">
             <h3 class="card-title"> &#8358; 150, 000</h3>
             <h4 class="card-subtitle mb-3">Total Contributions</h4>
@@ -32,7 +32,7 @@
               </tbody>
             </table>
           </div>
-        </a>
+        <% end %>
       </div>
 
       <div class="col-md-6">
@@ -86,7 +86,9 @@
           <div class="card">
             <div class="card-header">
               Recent Contributions
-              <a class="btn btn-secondary pull-right btn-sm">See All</a>
+              <%= link_to contributions_path, class: "btn btn-secondary pull-right btn-sm" do %>
+                See All
+              <% end %>
             </div>
             <table class="table table-striped">
               <thead>
