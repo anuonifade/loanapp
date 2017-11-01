@@ -33,10 +33,10 @@
                       <span class="caret"></span>
                     </div>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-                      <%= link_to profile_path(1), class: "dropdown-item" do %>
+                      <%= link_to profile_path(@user_id), class: "dropdown-item" do %>
                         <span class="fa fa-user"></span> Profile
                       <% end %>
-                      <%= link_to profile_path(1), class: "dropdown-item" do %>
+                      <%= link_to profile_path(@user_id), class: "dropdown-item" do %>
                         <span class="fa fa-cog"></span> Settings
                       <% end %>
                       <div class="dropdown-divider"></div>

@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  before_action :authenticate
+  before_action :authenticate, :set_user_id
   after_action :clear_xhr_flash
   
   protected
@@ -24,4 +24,11 @@ class ApplicationController < ActionController::Base
       flash.discard
     end
   end
+
+  private
+
+    def set_user_id
+      @user_id = session[:current_user_info]["id"]
+    end
+
 end

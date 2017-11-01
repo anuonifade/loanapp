@@ -24,6 +24,8 @@ Rails.application.routes.draw do
   get 'notifications' => 'notifications#notifications'
   get 'messages' => 'notifications#messages'
   get 'support' => 'supports#index'
+  get 'dashboard' => 'dashboard#index'
+  post 'profiles/:id/edit' => 'profiles#update_profile'
 
   controller :sessions do
     get "login" => :new
