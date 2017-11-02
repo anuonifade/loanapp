@@ -2,5 +2,7 @@
   <a class="nav-link" href="#"><span class="fa fa-circle-o"></span> Loan Application</a>
 </li>
 <li class="nav-item">
-  <a class="nav-link" href="#"><span class="fa fa-calendar"></span> Monthly Contribution</a>
+  <%= link_to contributions_path, class: "nav-link" do %>
+    <span class="fa fa-calendar"></span> Monthly Contribution
+  <% end %>
 </li>

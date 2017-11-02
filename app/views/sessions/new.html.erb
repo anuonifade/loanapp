@@ -1,11 +1,11 @@
   <section>
-    <div class="container-fluid">
+    <div class="login-box">
 
       <div class="text-center">
-        <%= image_tag "logo.png", alt: "NNPC Depot Logo", height: "40"  %>
+        <%= image_tag "logo.png", alt: "NNPC Depot Logo", height: "40", class: "login-logo"  %>
       </div>
 
-      <div class="login-box">
+      <div class="card">
         <div class="flash-message">
           <% if flash[:notice] %>
             <%= content_tag :span, flash[:notice], class: "notice", id: "puffly" %>
@@ -14,25 +14,30 @@
         <div class="login-signin">
           <div class="row">
             <div class="col-12 text-center">
-              <h6 class="text-muted text-uppercase">Sign In to start your session</h6>
+              <h3>Sign In</h3>
             </div>
           </div>
           <%= form_tag do |form|%>
             <div class="form-group row">
               <div class="col-12">
+                <%= label_tag :email, 'Staff ID/Email' %>
                 <%= text_field_tag :email, params[:email], class: "form-control", placeholder: "Staff ID/Email", required: true, autofocus: true %>
               </div>
             </div>
 
             <div class="form-group row">
               <div class="col-12">
+                <%= label_tag :password %>
                 <%= password_field_tag :password, params[:password], class: "form-control", placeholder: "Password", required: true %>
               </div>
             </div>
 
             <div class="form-group row">
               <div class="col-12">
-                <div class="checkbox checkbox-custom">
+                <div class="pull-right">
+                  <a href="#" class="forgot-password label-text"><i class="fa fa-lock"></i> Forgot your password?</a>
+                </div>
+                <div class="checkbox checkbox-custom other-fields">
                   <input id="checkbox-signup" type="checkbox">
                   <label for="checkbox-signup"> Remember me </label>
                 </div>
@@ -41,21 +46,18 @@
 
             <div class="form-group text-center row mt-2">
               <div class="col-12">
-                <%= submit_tag "SIGN IN", :class => "btn btn-block bg-pink waves-effect" %>
+                <%= submit_tag "Login to your Account", :class => "btn btn-block btn-info" %>
               </div>
             </div>
 
             <div class="form-group row mt-2 mb-0">
               <div class="col-12">
-                <a href="#" class="text-muted"><i class="fa fa-lock"></i> Forgot your password?</a>
-                <a href="/users/new">Register Now!</a>
+                <a href="/users/new" class="register-now label-text">Register Now!</a>
               </div>
             </div>
           <% end %>
-
+        
         </div>
-
-        <div class="clearfix"></div>
       </div>
     </div>
   </section>
