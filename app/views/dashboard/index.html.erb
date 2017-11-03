@@ -54,12 +54,12 @@
           </div>
           <div class="col-md-6">
             <!-- Card Tiles -->
-            <a class="card tiles green" href="#">
+            <%= link_to profile_path(1), class: "card tiles green" do %>
               <div class="card-body">
                 <span class="tiles-icon fa fa-user"></span>
                 <h4 class="tiles-link">My Profile</h4>
               </div>
-            </a>
+            <% end %>
             <!-- /.Card Tiles -->
           </div>
           <div class="col-md-6">

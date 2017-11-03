@@ -74,7 +74,7 @@ function numberToEnglish(n, custom_join_character) {
       if (ints[0] || ints[1]) {
 
         /* Chunk has a hundreds integer or chunk is the first of multiple chunks */
-        if (ints[2] || !i && chunksLen) {
+        if ((ints[2] || !i && chunksLen) && n > 99) {
           words.push(and);
         }
 
@@ -82,7 +82,7 @@ function numberToEnglish(n, custom_join_character) {
 
       /* Add hundreds word if array item exists */
       if ((word = units[ints[2]])) {
-        words.push(word + ' hundred');
+        words.push(word + ' Hundred');
       }
 
     }

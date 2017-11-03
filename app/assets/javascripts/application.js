@@ -17,5 +17,6 @@
 //= require puffly
 //= require ./plugins/bootstrap.min
 //= require ./plugins/numberToEnglish
+//= require ./plugins/number-divide
 //= require puffly
 //= require_directory .
