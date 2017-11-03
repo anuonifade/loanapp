@@ -1,0 +1,114 @@
+<section class="main-content">
+  <div class="container">
+    <h2 class="page-title">Apply for Loan</h2>
+    <div class="card">
+      <div class="card-body p-lg">
+      
+        <form action="" id="loan-form">
+          <div class="row">
+            <div class="col-sm-6">
+                      
+              <section class="profile-content">
+                <h5 class="primary-header">Loan Details</h5>
+                <%# Loan Type %>
+                <div class="form-group row">
+                  <label for="loan_type" class="col-sm-4 col-4 col-form-label">Loan Type</label>
+                  <div class="col-sm-7 col-8">
+                    <select id="loan_type" class="custom-select form-control">
+                      <option value="" selected>Select Loan Type</option>
+                      <option value="savings">Savings</option>
+                      <option value="housing">Housing / Mortgage</option>
+                      <option value="normal">Cooperative / Normal</option>
+                    </select>
+                  </div>
+                </div>
+                
+                <%# Amount %>
+                <div class="form-group row">
+                  <label for="first_name" class="col-sm-4 col-4 col-form-label">Amount</label>
+                  <div class="col-sm-7 col-8">
+                    <input type="text" class="form-control add-comma" id="amount" name="amount" placeholder="Amount">
+                  </div>
+                </div>
+                
+                <%# Duration of Payment %>
+                <div class="form-group row" id="duration-block">
+                  <label for="duration" class="col-sm-4 col-4 col-form-label">Duration</label>
+                  <div class="col-sm-7 col-8">
+                    <select class="form-control" id="duration" required>
+                      <option value="0">Select total months of payment</option>
+                      <option value="6">6 months</option>
+                      <option value="12">12 months</option>
+                      <option value="18">18 months</option>
+                      <option value="24">24 months</option>
+                      <option value="30">30 months</option>
+                      <option value="36">36 months</option>
+                    </select>
+                  </div>
+                </div>
+
+                
+
+                <div class="payment-block">
+        
+                  <%# Total Payment %>
+                  <div id="total-payment-block" class="form-group row">
+                    <label class="col-sm-4 col-4 col-form-label">Total Payment</label>
+                    <div class="col-sm-7 col-8">
+                      <p class="form-control-static price">
+                        &#8358; <span id="total-payment"></span>
+                      </p>
+                      <p id="total-payment-word" class="form-text text-muted price-in-word"></p>
+                    </div>
+                  </div>
+
+                  <%# Monthly Payment %>
+                  <div id="monthly-payment-block" class="form-group row">
+                    <label class="col-sm-4 col-4 col-form-label">Monthly Payment</label>
+                    <div class="col-sm-7 col-8">
+                      <p class="form-control-static price">
+                        &#8358; <span id="monthly-payment"></span>
+                      </p>
+                      <p id="monthly-payment-word" class="form-text text-muted price-in-word"></p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-check mt-4">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="checkbox" value="">
+                    I have read and understood the terms and conditions
+                  </label>
+                </div>
+                
+                <%# Total Contribution %>
+                <input type="hidden" id="total_contribution" value="150000">
+                
+                <%# Submit Button %>
+                <div class="form-group row mt-5">
+                  <div class="col-sm-12">
+                    <input type="submit" value="Apply for Loan" class="btn btn-secondary btn-lg">
+                  </div>
+                </div>
+              </section>
+            </div>
+
+            <div class="col-sm-6">
+
+              <section class="profile-content">
+                <h5 class="primary-header">Terms and Conditions</h5>
+                <ul>
+                  <li> The loan shall be subject to Management Committee Approval</li>
+                  <li>Your net pay must be able to accommodate the monthly deduction</li>
+                  <li> The Society reserves the right to grant or reject any application.</li>
+                </ul>
+              </section>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</section>
+
