@@ -4,7 +4,7 @@
     <title>Loanapp</title>
     <%= csrf_meta_tags %>
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500" rel="stylesheet">
     <link rel="shortcut icon" href="http://res.cloudinary.com/dzwafstu3/image/upload/v1500335476/nnpc/favicon.png" type="image/png">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -18,5 +18,6 @@
       <%= content_tag :span, msg, class: "#{type}", id: "puffly" %>
     <% end %>
     <%= yield %>
+    <%= render("layouts/footer") %>
   </body>
 </html>

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :admin
   resources :contributions
   resources :loans
   resources :officers
