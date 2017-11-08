@@ -7,12 +7,71 @@ body {
 
 .main-content {
   margin-top: -1px;
-  padding: 50px 0;
+  padding: 50px 0 60px;
   background-color: #eceff4;
+  min-height: 100vh;
 }
 
 .card-body {
   padding: 30px;
+}
+
+.card-tab {
+  .badge {
+    background-color: $blue;
+    color: white;
+    transition: all .4s ease-out;
+  }
+
+  .nav-link {
+    &.active {
+      .badge {
+        background-color: white;
+        color: $blue;
+      }
+    }
+    &:hover {
+      .badge {
+        background-color: $red;
+      }
+      &.active .badge {
+        background-color: white;
+      }
+    }
+  }
+}
+.tab-content {
+  padding: 0 !important;
+  
+  table td {
+    vertical-align: middle;
+    padding: 1em .75em;
+  }
+}
+
+.nav-pills .nav-link {
+  font-weight: 600;
+  color: #929daf;
+  line-height: 33px;
+  padding: 0px 12px;
+  white-space: nowrap;
+  position: relative;
+  border: none;
+  font-size: 14px;
+  text-align: center;
+  padding: 10px 30px;
+  border-radius: 0;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.btn-round {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 2px 0 0;
+  border-radius: 50%;
+  margin-left: 10px;
 }
 
 .page-title {
@@ -45,4 +104,13 @@ table.borderless {
 
 .text-dimmed {
   color: #ccc;
+}
+
+footer {
+  background: #333;
+  bottom: 1px solid #000;
+  padding: 30px 0;
+  font-size: 14px;
+  font-weight: 400;
+  color: #ddd;
 }

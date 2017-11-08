@@ -1,10 +1,10 @@
-<% unless admin? %>
-  <div class="menu-navbar">
-    <a href="/">Home</a>
-    <a href="#">Loan Applications</a>
-    <a href="#">Monthly Contributions</a>
-    <a href="#">Profile</a>
-  </div>
+<% if admin? %>
+  <%= navigation_menu('Home', admin_index_path, 'home') %>
+  <%= navigation_menu('Manage Loans', loans_path, 'circle-o') %>
+  <%= navigation_menu('Manage Contributions', contributions_path, 'calendar') %>
+  <%= navigation_menu('Manage Users', admin_index_path, 'users') %>
 <% else %>
-  <%= render("layouts/navbaradmin") %>
+  <%= navigation_menu('Home', root_path, 'home') %>
+  <%= navigation_menu('Loan Application', loans_path, 'calendar') %>
+  <%= navigation_menu('Monthly Contribution', contributions_path, 'calendar') %>
 <% end %>

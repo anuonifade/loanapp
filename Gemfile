@@ -32,6 +32,7 @@ gem "bcrypt", "~> 3.1.7"
 gem "jwt"
 gem "figaro"
 gem 'cloudinary'
+gem 'chart-js-rails'
 
 
 # Use Capistrano for deployment
