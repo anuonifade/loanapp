@@ -4,7 +4,7 @@
 
     <div class="row">
       <div class="col-md-3">
-        <%= link_to contributions_path, class: "card widget" do %>
+        <%= link_to admin_month_details_path, class: "card widget" do %>
           <div class="widget-title">
             <span class="badge badge-primary pull-right"> 15 People</span>
             <h5>Contributions</h5>
@@ -18,7 +18,7 @@
       </div>
       
       <div class="col-md-3">
-        <%= link_to contributions_path, class: "card widget" do %>
+        <%= link_to admin_month_details_path, class: "card widget" do %>
           <div class="widget-title">
             <span class="badge badge-danger pull-right"> 15 People</span>
             <h5>Loans</h5>
@@ -32,7 +32,7 @@
       </div>
       
       <div class="col-md-3">
-        <%= link_to contributions_path, class: "card widget" do %>
+        <%= link_to admin_application_details_path, class: "card widget" do %>
           <div class="widget-title">
             <span class="badge badge-success pull-right"> Granted </span>
             <h5>Applications</h5>
@@ -46,7 +46,7 @@
       </div>
       
       <div class="col-md-3">
-        <%= link_to contributions_path, class: "card widget" do %>
+        <%= link_to admin_application_details_path, class: "card widget" do %>
           <div class="widget-title">
             <span class="badge badge-warning pull-right"> Pending </span>
             <h5>Applications</h5>
@@ -113,7 +113,7 @@
         <div class="row">
           <div class="col-md-12">
             <!-- Card Tiles -->
-            <a class="card tiles blue" href="#">
+            <%= link_to admin_total_contributions_path, class: "card tiles blue" do %>
               <div class="card-body">
                 <span class="tiles-icon fa fa-money"></span>
                 <h4 class="tiles-link">
@@ -121,12 +121,12 @@
                   <div>1,500,000,000</div>
                 </h4>
               </div>
-            </a>
+            <% end %>
             <!-- /.Card Tiles -->
           </div>
           <div class="col-md-12">
             <!-- Card Tiles -->
-            <a class="card tiles red" href="#">
+            <%= link_to admin_total_loans_path, class: "card tiles blue" do %>
               <div class="card-body">
                 <span class="tiles-icon fa fa-credit-card"></span>
                 <h4 class="tiles-link">
@@ -134,7 +134,7 @@
                   <div>500,000,000</div>
                 </h4>
               </div>
-            </a>
+            <% end %>
             <!-- /.Card Tiles -->
           </div>
         </div>
@@ -152,7 +152,7 @@
             <li class="nav-item">
               <a class="nav-link" data-toggle="tab" href="#profile" role="tab">Recent Loan <span class="badge"> 8 </span></a>
             </li>
-          </ul>
+          </ul> 
 
           <!-- Tab panes -->
           <div class="card-body tab-content">
@@ -342,7 +342,7 @@
         <div class="row">
           <div class="col-md-12">
             <!-- Card Tiles -->
-            <a class="card tiles green" href="#">
+            <%= link_to admin_all_users_path, class: "card tiles green" do %>
               <div class="card-body">
                 <span class="tiles-icon fa fa-user"></span>
                 <h4 class="tiles-link">
@@ -350,7 +350,7 @@
                   <div>250 Staffs</div>
                 </h4>
               </div>
-            </a>
+            <% end %>
             <!-- /.Card Tiles -->
           </div>
         </div>
