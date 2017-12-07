@@ -18,6 +18,8 @@
       <%= content_tag :span, msg, class: "#{type}", id: "puffly" %>
     <% end %>
     <%= yield %>
-    <%= render("layouts/footer") %>
+    <% if cookies[:user_info] && session[:current_user_info] %>
+      <%= render("layouts/footer") %>
+    <% end %>
   </body>
 </html>

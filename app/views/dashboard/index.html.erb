@@ -64,12 +64,12 @@
           </div>
           <div class="col-md-6">
             <!-- Card Tiles -->
-            <a class="card tiles orange" href="#">
+            <%= link_to support_path, class: "card tiles orange" do %>
               <div class="card-body">
                 <span class="tiles-icon fa fa-life-ring"></span>
                 <h4 class="tiles-link">Support</h4>
               </div>
-            </a>
+            <% end %>
             <!-- /.Card Tiles -->
           </div>
         </div>
@@ -132,7 +132,9 @@
           <div class="card">
             <div class="card-header">
               Recent Loans
-              <a class="btn btn-secondary pull-right btn-sm">See All</a>
+              <%= link_to recent_loans_path, class: "btn btn-secondary pull-right btn-sm" do %>
+                See All
+              <% end %>
             </div>
             <table class="table table-striped">
               <thead>
