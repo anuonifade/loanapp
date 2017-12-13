@@ -1,28 +1,28 @@
 <section class="main-content">
   <div class="container">
-    <h3 class="page-title mb-4">Welcome Back, Anuoluwapo</h3>
+    <h3 class="page-title mb-4">Welcome Back, <%= @user_profile.firstname %></h3>
 
     <div class="row">
 
       <div class="col-md-6">
         <%= link_to contributions_path, class: "card tiles red big" do %>
           <div class="card-body">
-            <h3 class="card-title"> &#8358; 150, 000</h3>
+            <h3 class="card-title"> &#8358; 0.00</h3>
             <h4 class="card-subtitle mb-3">Total Contributions</h4>
             <hr>
             <table class="table">
               <tbody>
                 <tr>
-                  <td>Current Savings</td>
-                  <td class="text-right">15,000</td>
+                  <td>Total Savings</td>
+                  <td class="text-right">&#8358; 0.00</td>
                 </tr>
                 <tr>
-                  <td>Loan Repayment</td>
-                  <td class="text-right">20,000</td>
+                  <td>Total Loan</td>
+                  <td class="text-right">&#8358; 0.00</td>
                 </tr>
                 <tr>
-                  <td>Balance</td>
-                  <td class="text-right">5,000</td>
+                  <td>Total Balance</td>
+                  <td class="text-right">&#8358; 0.00</td>
                 </tr>
               </tbody>
             </table>
@@ -44,17 +44,17 @@
           </div>
           <div class="col-md-6">
             <!-- Card Tiles -->
-            <a class="card tiles blue" href="#">
+            <%= link_to contributions_path, class: "card tiles blue" do %>
               <div class="card-body">
                 <span class="tiles-icon fa fa-clipboard"></span>
                 <h4 class="tiles-link">Savings History</h4>
               </div>
-            </a>
+            <% end %>
             <!-- /.Card Tiles -->
           </div>
           <div class="col-md-6">
             <!-- Card Tiles -->
-            <%= link_to profile_path(1), class: "card tiles green" do %>
+            <%= link_to profile_path(@user_id), class: "card tiles green" do %>
               <div class="card-body">
                 <span class="tiles-icon fa fa-user"></span>
                 <h4 class="tiles-link">My Profile</h4>

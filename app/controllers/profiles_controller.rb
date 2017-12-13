@@ -18,7 +18,7 @@ class ProfilesController < ApplicationController
 
   def update_profile
     if @profile
-      @profile = Profile.find_by(user_id: params[:id])
+      @profile = Profile.find_by(user_id: @user_id)
       if @profile.update(profile_params)
         @profile.save
         redirect_to controller: 'profiles', action: 'show', id: @user_id
@@ -42,7 +42,7 @@ class ProfilesController < ApplicationController
   private
 
     def set_profile
-      @profile = Profile.find_by(user_id: params[:id]) || nil
+      @profile = Profile.find_by(user_id: @user_id) || nil
     end
 
     def profile_params

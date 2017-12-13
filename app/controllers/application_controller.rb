@@ -28,9 +28,12 @@ class ApplicationController < ActionController::Base
   private
 
     def set_user
-      @user_id = session[:current_user_info]["id"]
-      @staff_id = session[:current_user_info]["username"]
-      @user_email = session[:current_user_info]["email"]
+      if session[:current_user_info]
+        @user_id = session[:current_user_info]["id"] || nil
+        @staff_id = session[:current_user_info]["username"] || nil
+        @user_email = session[:current_user_info]["email"] || nil
+        @user_profile = Profile.find_by(user_id: @user_id)
+      end
     end
 
 end

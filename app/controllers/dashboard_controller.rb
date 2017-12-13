@@ -21,4 +21,5 @@ class DashboardController < ApplicationController
       false
     end
   end
+
 end
