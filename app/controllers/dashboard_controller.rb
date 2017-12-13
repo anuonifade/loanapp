@@ -6,15 +6,19 @@ class DashboardController < ApplicationController
 
   def validate_profile_presence
     if profile_presence?
-      render 'index'
+      render :index
     else
-      user_id = session[:current_user_info]["id"]
-      redirect_to controller: 'profiles', action: 'edit', id: user_id
+      redirect_to controller: 'profiles', action: 'edit', id: @user_id
     end
 
   end
 
   def profile_presence?
-    false
+    profile = Profile.find_by(user_id: @user_id)
+    if profile
+      true
+    else
+      false
+    end
   end
 end

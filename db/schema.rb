@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170905005910) do
+ActiveRecord::Schema.define(version: 20171213153908) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20170905005910) do
     t.bigint "profile_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "account_name"
     t.index ["profile_id"], name: "index_bank_details_on_profile_id"
   end
 
@@ -33,18 +34,6 @@ ActiveRecord::Schema.define(version: 20170905005910) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["profile_id"], name: "index_contributions_on_profile_id"
-  end
-
-  create_table "guarantors", force: :cascade do |t|
-    t.bigint "profile_id"
-    t.integer "loan_id"
-    t.integer "borrower_id"
-    t.integer "guarantor_one_id"
-    t.integer "guarantor_two_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["loan_id"], name: "index_guarantors_on_loan_id"
-    t.index ["profile_id"], name: "index_guarantors_on_profile_id"
   end
 
   create_table "loan_types", force: :cascade do |t|
@@ -61,8 +50,29 @@ ActiveRecord::Schema.define(version: 20170905005910) do
     t.bigint "loan_type_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "guarantor_one_id"
+    t.integer "guarantor_two_id"
+    t.integer "guarantor_one_approved"
+    t.integer "guarantor_two_approved"
     t.index ["loan_type_id"], name: "index_loans_on_loan_type_id"
     t.index ["profile_id"], name: "index_loans_on_profile_id"
+  end
+
+  create_table "next_of_kins", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.string "phone"
+    t.string "address1"
+    t.string "address2"
+    t.string "city"
+    t.string "state"
+    t.string "nationality"
+    t.bigint "profile_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "relationship"
+    t.index ["profile_id"], name: "index_next_of_kins_on_profile_id"
   end
 
   create_table "officers", force: :cascade do |t|
@@ -75,14 +85,12 @@ ActiveRecord::Schema.define(version: 20170905005910) do
   end
 
   create_table "profiles", force: :cascade do |t|
-    t.string "staff_id"
     t.string "firstname"
     t.string "middlename"
     t.string "lastname"
     t.string "gender"
     t.string "phone"
     t.date "dob"
-    t.string "year_of_employment"
     t.string "address1"
     t.string "address2"
     t.string "city"
@@ -95,6 +103,7 @@ ActiveRecord::Schema.define(version: 20170905005910) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "year_of_employment"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
@@ -131,10 +140,9 @@ ActiveRecord::Schema.define(version: 20170905005910) do
 
   add_foreign_key "bank_details", "profiles"
   add_foreign_key "contributions", "profiles"
-  add_foreign_key "guarantors", "loans"
-  add_foreign_key "guarantors", "profiles"
   add_foreign_key "loans", "loan_types"
   add_foreign_key "loans", "profiles"
+  add_foreign_key "next_of_kins", "profiles"
   add_foreign_key "officers", "profiles"
   add_foreign_key "profiles", "users"
   add_foreign_key "users", "roles"
