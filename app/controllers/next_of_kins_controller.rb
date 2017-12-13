@@ -1,0 +1,2 @@
+class NextOfKinsController < ApplicationController
+end
