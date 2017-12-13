@@ -10,8 +10,8 @@
           <small class="text-dimmed">Click on image to change</small>
           <br>
           <h5 class="primary-header mt-3 mb-3">
-            Jonathan Malls <br>
-            <small class="text-muted">08012345678</small>
+            <%= @profile.firstname %> <%= @profile.lastname %> <br>
+            <small class="text-muted"><%= @profile.phone %></small>
           </h5>
           <%= link_to edit_profile_path(@user_id), class: "btn btn-danger" do %>
             <span class="fa fa-user"></span> Edit Profile
@@ -25,44 +25,57 @@
                 <tbody>
                   <tr>
                     <td>Staff ID</td>
-                    <td>123456</td>
+                    <td><%= @staff_id %></td>
                   </tr>
                   <tr>
-                    <td>Name</td>
-                    <td>Jonathan Malls</td>
+                    <td>Full Name</td>
+                    <td> <%= @profile.firstname %> <%= @profile.middlename %> <%= @profile.lastname %> </td>
                   </tr>
                   <tr>
                     <td>Email</td>
-                    <td>Jonathan.malls@yahoo.com</td>
+                    <td><%= @user_email %></td>
                   </tr>
                   <tr>
                     <td>Phone</td>
-                    <td>08012345678</td>
+                    <td><%= @profile.phone%></td>
                   </tr>
                   <tr>
-                    <td>Age</td>
-                    <td>26</td>
-                  </tr>
-                  <tr>
-                    <td>Gender</td>
-                    <td>Male</td>
-                  </tr>
-                  <tr>
-                    <td>Address</td>
-                    <td>2790 Ingram Street</td>
-                  </tr>
-                  <tr>
-                    <td>State</td>
-                    <td>Oyo</td>
-                  </tr>
-                  <tr>
-                    <td>Nationality</td>
-                    <td>Nigeria</td>
+                    <td>Date of Birth</td>
+                    <td><%= @profile.dob %></td>
                   </tr>
                   <tr>
                     <td>Designation</td>
-                    <td>Public Relations</td>
+                    <td><%= @profile.designation %></td>
                   </tr>
+                  <tr>
+                    <td>Location</td>
+                    <td><%= @profile.location %></td>
+                  </tr>
+                  <tr>
+                    <td>Department</td>
+                    <td><%= @profile.department %></td>
+                  </tr>
+                  <tr>
+                    <td>Year of Employment</td>
+                    <td><%= @profile.year_of_employment %></td>
+                  </tr>
+                  <tr>
+                    <td>Gender</td>
+                    <td><%= @profile.gender %></td>
+                  </tr>
+                  <tr>
+                    <td>Address</td>
+                    <td><%= @profile.address1 %> <%= @profile.address2 %>, <%= @profile.city %></td>
+                  </tr>
+                  <tr>
+                    <td>State</td>
+                    <td><%= @profile.state %></td>
+                  </tr>
+                  <tr>
+                    <td>Nationality</td>
+                    <td><%= @profile.nationality %></td>
+                  </tr>
+                  
                 </tbody>
               </table>
             </div>
@@ -72,19 +85,19 @@
                 <tbody>
                   <tr>
                     <td>Account Name</td>
-                    <td>Jonathan Malls</td>
+                    <td><%= @profile.bank_detail.account_name %></td>
                   </tr>
                   <tr>
                     <td>Account No</td>
-                    <td>0123456789</td>
+                    <td><%= @profile.bank_detail.account_number %></td>
                   </tr>
                   <tr>
                     <td>Bank</td>
-                    <td>First Bank</td>
+                    <td><%= @profile.bank_detail.bank_name %></td>
                   </tr>
                   <tr>
                     <td>Sort Code</td>
-                    <td>45678123</td>
+                    <td><%= @profile.bank_detail.sort_code %></td>
                   </tr>
                 </tbody>
               </table>
@@ -94,74 +107,37 @@
               <table class="table profile-content">
                 <tbody>
                   <tr>
-                    <td>Name</td>
-                    <td>Jamiere Lannister</td>
+                    <td>Full Name</td>
+                    <td><%= @profile.next_of_kin.first_name %> <%= @profile.next_of_kin.last_name %></td>
                   </tr>
                   <tr>
                     <td>Email</td>
-                    <td>Jamiere@yahoo.com</td>
+                    <td><%= @profile.next_of_kin.email %></td>
                   </tr>
                   <tr>
                     <td>Phone</td>
-                    <td>08012345678</td>
+                    <td><%= @profile.next_of_kin.phone %></td>
                   </tr>
                   <tr>
                     <td>Relationship</td>
-                    <td>Brother</td>
+                    <td><%= @profile.next_of_kin.relationship %></td>
+                  </tr>
+                  <tr>
+                    <td>Address</td>
+                    <td><%= @profile.next_of_kin.address1 %> <%= @profile.next_of_kin.address2 %>, <%= @profile.next_of_kin.city %></td>
+                  </tr>
+                  <tr>
+                    <td>State</td>
+                    <td><%= @profile.next_of_kin.state %></td>
+                  </tr>
+                  <tr>
+                    <td>Nationality</td>
+                    <td><%= @profile.next_of_kin.nationality %></td>
                   </tr>
                 </tbody>
               </table>
             </div>
           </div>
-
-       <div class="row">
-        <div class="col-sm-6">
-          <h5 class="primary-header">Guarantor 1</h5>
-          <table class="table profile-content">
-            <tbody>
-              <tr>
-                <td>Name</td>
-                <td>Jamiere Lannister</td>
-              </tr>
-              <tr>
-                <td>Email</td>
-                <td>Jamiere@yahoo.com</td>
-              </tr>
-              <tr>
-                <td>Phone</td>
-                <td>08012345678</td>
-              </tr>
-              <tr>
-                <td>Relationship</td>
-                <td>Brother</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="col-sm-6">
-          <h5 class="primary-header">Guarantor 2</h5>
-          <table class="table profile-content">
-            <tbody>
-              <tr>
-                <td>Name</td>
-                <td>Jamiere Lannister</td>
-              </tr>
-              <tr>
-                <td>Email</td>
-                <td>Jamiere@yahoo.com</td>
-              </tr>
-              <tr>
-                <td>Phone</td>
-                <td>08012345678</td>
-              </tr>
-              <tr>
-                <td>Relationship</td>
-                <td>Brother</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-       </div>
          </div>
        </div>
       </div>

@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  before_action :set_profile, only: [:edit, :update_profile]
+  before_action :set_profile, only: [:edit, :update_profile, :show]
   before_action :profile_params, only: [:update_profile]
 
 
@@ -21,7 +21,7 @@ class ProfilesController < ApplicationController
       @profile = Profile.find_by(user_id: params[:id])
       if @profile.update(profile_params)
         @profile.save
-        redirect_to @profile
+        redirect_to controller: 'profiles', action: 'show', id: @user_id
       else
         render :edit
       end
@@ -49,7 +49,7 @@ class ProfilesController < ApplicationController
       params.require(:profile).permit(
         Profile.new.attributes.keys.map(&:to_sym),
         bank_detail_attributes: [:account_name, :account_number, :bank_name, :sort_code],
-        next_of_kin_attributes: [:first_name, :last_name, :email, :phone, :relationship, :address1, :address2, :city, :state]
+        next_of_kin_attributes: [:first_name, :last_name, :email, :phone, :relationship, :address1, :address2, :city, :state, :nationality]
       )
     end
 

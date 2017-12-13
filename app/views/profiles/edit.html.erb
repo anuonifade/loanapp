@@ -250,11 +250,19 @@
                     </div>
                   </div>
 
-                  <%# city%>
+                  <%# State%>
                   <div class="form-group row">
                     <%= fnok.label :state, "State", class: "col-sm-4 col-4 col-form-label" %>
                     <div class="col-sm-7 col-8">
                       <%= fnok.text_field :state, class: "form-control", id:"nok_state", placeholder:"State" %>
+                    </div>
+                  </div>
+
+                  <%# Nationality%>
+                  <div class="form-group row">
+                    <%= fnok.label :nationality, "Nationality", class: "col-sm-4 col-4 col-form-label" %>
+                    <div class="col-sm-7 col-8">
+                      <%= fnok.text_field :nationality, class: "form-control", id:"nok_nationality", placeholder:"Nationality" %>
                     </div>
                   </div>
                 <% end %>
