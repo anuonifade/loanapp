@@ -1,9 +1,5 @@
 module ApplicationHelper
 
-  def admin?
-    
-  end
-
   def navigation_menu(name, path, icon="calendar")
     class_name = "nav-link"
     if current_page?(path)
