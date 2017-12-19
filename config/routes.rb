@@ -19,12 +19,10 @@ Rails.application.routes.draw do
   resources :loan_types
   resources :users
 
-  get 'dashboard' => 'dashboard#index'
   get 'recent-loans' => 'loans#recent_loans'
   get 'notifications' => 'notifications#notifications'
   get 'messages' => 'notifications#messages'
   get 'support' => 'supports#index'
-  get 'dashboard' => 'dashboard#index'
   post 'profiles/:id/edit' => 'profiles#update_profile'
 
   controller :sessions do
@@ -33,5 +31,5 @@ Rails.application.routes.draw do
     get "logout" => :destroy
   end
 
-  root 'dashboard#index'
+  root 'dashboards#index'
 end

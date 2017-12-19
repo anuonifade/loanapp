@@ -24,7 +24,7 @@
               <table class="table profile-content">
                 <tbody>
                   <tr>
-                    <td>Staff ID</td>
+                    <td>Thrift Account</td>
                     <td><%= @staff_id %></td>
                   </tr>
                   <tr>
@@ -61,7 +61,7 @@
                   </tr>
                   <tr>
                     <td>Gender</td>
-                    <td><%= eval(@profile.gender)[:value] %></td>
+                    <td><%= eval(@profile.gender)[:value] unless @profile.gender.blank?  %></td>
                   </tr>
                   <tr>
                     <td>Address</td>
@@ -85,19 +85,19 @@
                 <tbody>
                   <tr>
                     <td>Account Name</td>
-                    <td><%= @profile.bank_detail.account_name %></td>
+                    <td><%= @profile.bank_detail.account_name unless @profile.bank_detail.blank? %></td>
                   </tr>
                   <tr>
                     <td>Account No</td>
-                    <td><%= @profile.bank_detail.account_number %></td>
+                    <td><%= @profile.bank_detail.account_number unless @profile.bank_detail.blank?  %></td>
                   </tr>
                   <tr>
                     <td>Bank</td>
-                    <td><%= @profile.bank_detail.bank_name %></td>
+                    <td><%= @profile.bank_detail.bank_name unless @profile.bank_detail.blank?  %></td>
                   </tr>
                   <tr>
                     <td>Sort Code</td>
-                    <td><%= @profile.bank_detail.sort_code %></td>
+                    <td><%= @profile.bank_detail.sort_code unless @profile.bank_detail.blank?  %></td>
                   </tr>
                 </tbody>
               </table>
@@ -108,31 +108,34 @@
                 <tbody>
                   <tr>
                     <td>Full Name</td>
-                    <td><%= @profile.next_of_kin.first_name %> <%= @profile.next_of_kin.last_name %></td>
+                    <td><%= @profile.next_of_kin.first_name unless @profile.next_of_kin.blank? %> 
+                    <%= @profile.next_of_kin.last_name unless @profile.next_of_kin.blank? %></td>
                   </tr>
                   <tr>
                     <td>Email</td>
-                    <td><%= @profile.next_of_kin.email %></td>
+                    <td><%= @profile.next_of_kin.email unless @profile.next_of_kin.blank? %></td>
                   </tr>
                   <tr>
                     <td>Phone</td>
-                    <td><%= @profile.next_of_kin.phone %></td>
+                    <td><%= @profile.next_of_kin.phone unless @profile.next_of_kin.blank? %></td>
                   </tr>
                   <tr>
                     <td>Relationship</td>
-                    <td><%= @profile.next_of_kin.relationship %></td>
+                    <td><%= @profile.next_of_kin.relationship unless @profile.next_of_kin.blank? %></td>
                   </tr>
                   <tr>
                     <td>Address</td>
-                    <td><%= @profile.next_of_kin.address1 %> <%= @profile.next_of_kin.address2 %>, <%= @profile.next_of_kin.city %></td>
+                    <td><%= @profile.next_of_kin.address1 unless @profile.next_of_kin.blank? %> 
+                    <%= @profile.next_of_kin.address2 unless @profile.next_of_kin.blank? %>, 
+                    <%= @profile.next_of_kin.city unless @profile.next_of_kin.blank? %></td>
                   </tr>
                   <tr>
                     <td>State</td>
-                    <td><%= @profile.next_of_kin.state %></td>
+                    <td><%= @profile.next_of_kin.state unless @profile.next_of_kin.blank? %></td>
                   </tr>
                   <tr>
                     <td>Nationality</td>
-                    <td><%= @profile.next_of_kin.nationality %></td>
+                    <td><%= @profile.next_of_kin.nationality unless @profile.next_of_kin.blank? %></td>
                   </tr>
                 </tbody>
               </table>
