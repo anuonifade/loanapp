@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171213153908) do
+ActiveRecord::Schema.define(version: 20171219190920) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,13 +27,23 @@ ActiveRecord::Schema.define(version: 20171213153908) do
   end
 
   create_table "contributions", force: :cascade do |t|
-    t.decimal "amount"
     t.string "start_month"
     t.string "start_year"
     t.bigint "profile_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "amount", precision: 20, scale: 2
     t.index ["profile_id"], name: "index_contributions_on_profile_id"
+  end
+
+  create_table "loan_repayments", force: :cascade do |t|
+    t.decimal "amount", precision: 10, scale: 2
+    t.string "month"
+    t.integer "year"
+    t.bigint "loan_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["loan_id"], name: "index_loan_repayments_on_loan_id"
   end
 
   create_table "loan_types", force: :cascade do |t|
@@ -44,8 +54,6 @@ ActiveRecord::Schema.define(version: 20171213153908) do
   end
 
   create_table "loans", force: :cascade do |t|
-    t.decimal "amount"
-    t.decimal "monthly_deduction"
     t.bigint "profile_id"
     t.bigint "loan_type_id"
     t.datetime "created_at", null: false
@@ -54,8 +62,23 @@ ActiveRecord::Schema.define(version: 20171213153908) do
     t.integer "guarantor_two_id"
     t.integer "guarantor_one_approved"
     t.integer "guarantor_two_approved"
+    t.string "start_month"
+    t.integer "start_year"
+    t.decimal "amount", precision: 20, scale: 2
+    t.decimal "expected_amount", precision: 20, scale: 2
+    t.decimal "monthly_deduction", precision: 20, scale: 2
     t.index ["loan_type_id"], name: "index_loans_on_loan_type_id"
     t.index ["profile_id"], name: "index_loans_on_profile_id"
+  end
+
+  create_table "monthly_contributions", force: :cascade do |t|
+    t.decimal "amount", precision: 10, scale: 2
+    t.string "month"
+    t.integer "year"
+    t.bigint "profile_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile_id"], name: "index_monthly_contributions_on_profile_id"
   end
 
   create_table "next_of_kins", force: :cascade do |t|
@@ -97,7 +120,6 @@ ActiveRecord::Schema.define(version: 20171213153908) do
     t.string "state"
     t.string "nationality"
     t.string "designation"
-    t.string "thrift_account"
     t.string "department"
     t.string "location"
     t.bigint "user_id"
@@ -140,8 +162,10 @@ ActiveRecord::Schema.define(version: 20171213153908) do
 
   add_foreign_key "bank_details", "profiles"
   add_foreign_key "contributions", "profiles"
+  add_foreign_key "loan_repayments", "loans"
   add_foreign_key "loans", "loan_types"
   add_foreign_key "loans", "profiles"
+  add_foreign_key "monthly_contributions", "profiles"
   add_foreign_key "next_of_kins", "profiles"
   add_foreign_key "officers", "profiles"
   add_foreign_key "profiles", "users"
