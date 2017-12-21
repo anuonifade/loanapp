@@ -84,7 +84,7 @@
                 See All
               <% end %>
             </div>
-            <% if @monthly_contribution.empty? %>
+            <% if @monthly_contribution == 0 || @monthly_contribution.nil? %>
               <div class="card-body">
                 You currently do not have any contribution
               </div>
