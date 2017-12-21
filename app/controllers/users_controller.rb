@@ -19,7 +19,7 @@ class UsersController < ApplicationController
       @user = User.new(user_params)
 
       if @user.save
-        cookies.encrypted[:user_info] = user_params[:email]
+        cookies.encrypted[:user_info] = @user
         flash[:notice] = "Registration Successful"
         redirect_to root_url 
       else
