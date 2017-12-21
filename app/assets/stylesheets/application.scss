@@ -9,6 +9,9 @@
  * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
+ *= require toastr
+ *= require select2
+ *= require select2-bootstrap
  *= require_directory .
  *= require_self
  */
@@ -57,4 +60,22 @@ body,
 .table-money {
   border: 1px solid #ddd;
   margin-bottom: 0;
+}
+
+.alert {
+  margin-top: 30px;
+}
+
+.toastr {
+  font-size: 13px;
+}
+
+.select2-container--bootstrap .select2-selection--single {
+  border-radius: 0;
+  height: 38px;
+}
+
+.select2-container--bootstrap .select2-selection--single .select2-selection__rendered {
+  padding-top: 2px;
+  color: #333;
 }
