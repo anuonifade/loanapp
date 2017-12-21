@@ -19,4 +19,6 @@
 //= require ./plugins/numberToEnglish
 //= require ./plugins/number-divide
 //= require Chart.min
+//= require toastr
+//= require select2
 //= require_directory

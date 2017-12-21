@@ -10,7 +10,7 @@ module DashboardsHelper
     true unless user.role_id > 1
   end
 
-  def to_currency(amount)
+  def to_currency(amount = 0)
     number_to_currency amount, precision: 2, unit: ""
   end
 

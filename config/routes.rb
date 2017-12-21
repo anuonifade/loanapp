@@ -19,6 +19,10 @@ Rails.application.routes.draw do
   resources :loan_types
   resources :users
 
+  namespace :admin do
+    resources :loans, :contributions, :users, :admin_users
+  end
+
   get 'recent-loans' => 'loans#recent_loans'
   get 'notifications' => 'notifications#notifications'
   get 'messages' => 'notifications#messages'
