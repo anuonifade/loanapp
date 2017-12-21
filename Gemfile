@@ -33,7 +33,8 @@ gem "jwt"
 gem "figaro"
 gem 'cloudinary'
 gem 'chart-js-rails'
-
+gem "toastr-rails"
+gem "select2-rails"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

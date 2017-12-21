@@ -1,33 +1,43 @@
 <section class="main-content">
   <div class="container">
-    <h2 class="page-title">Apply for Loan</h2>
+    <h2 class="page-title">Apply for Loan</h2>    
     <div class="card">
       <div class="card-body p-lg">
       
-        <form action="" id="loan-form">
+      <%= form_for(@loan) do |f| %>
           <div class="row">
             <div class="col-sm-6">
                       
               <section class="profile-content">
                 <h5 class="primary-header">Loan Details</h5>
+                                
+                <%= render "layouts/alerts" %>
+                
                 <%# Loan Type %>
                 <div class="form-group row">
                   <label for="loan_type" class="col-sm-4 col-4 col-form-label">Loan Type</label>
                   <div class="col-sm-7 col-8">
-                    <select id="loan_type" class="custom-select form-control">
-                      <option value="" selected>Select Loan Type</option>
-                      <option value="savings">Savings</option>
-                      <option value="housing">Housing / Mortgage</option>
-                      <option value="normal">Cooperative / Normal</option>
-                    </select>
+                    <%= f.select :loan_type_id,
+                      options_from_collection_for_select(@loan_types, "id", "name",@loan[:loan_type_id]),
+                      { 
+                        include_blank: "Select Loan Type" 
+                      },
+                      {
+                        class: "custom-select form-control",
+                        id:"loan_type",
+                        required: true,
+                      }
+
+                    %>
                   </div>
                 </div>
                 
                 <%# Amount %>
                 <div class="form-group row">
-                  <label for="first_name" class="col-sm-4 col-4 col-form-label">Amount</label>
+                  <label for="amount" class="col-sm-4 col-4 col-form-label">Amount</label>
                   <div class="col-sm-7 col-8">
-                    <input type="text" class="form-control add-comma" id="amount" name="amount" placeholder="Amount">
+                    <input type="text" class="form-control add-comma" id="amount" placeholder="Amount" value="<%= @loan[:amount] %>">
+                    <%= f.hidden_field :amount, { value: 0, id: "loan-amount" } %>
                   </div>
                 </div>
                 
@@ -35,19 +45,28 @@
                 <div class="form-group row" id="duration-block">
                   <label for="duration" class="col-sm-4 col-4 col-form-label">Duration</label>
                   <div class="col-sm-7 col-8">
-                    <select class="form-control" id="duration" required>
-                      <option value="0">Select total months of payment</option>
-                      <option value="6">6 months</option>
-                      <option value="12">12 months</option>
-                      <option value="18">18 months</option>
-                      <option value="24">24 months</option>
-                      <option value="30">30 months</option>
-                      <option value="36">36 months</option>
-                    </select>
+                    <%= f.select :duration,
+                        options_for_select((6..36).step(6).map{ |month| [month.to_s + ' months', month]}, @loan[:duration]),
+                        { 
+                          include_blank: "Select total months of payment" 
+                        },
+                        {
+                          class: "custom-select form-control"
+                        }
+                    %>
+
+                    <%# Yearly deduction is used to hold the duration for housing %>
+                    <%= f.select :yearly_deduction,
+                        options_for_select((2..20).step(1).map{ |year| [year.to_s + ' years', year * 12]}, @loan[:duration]),
+                        { 
+                          include_blank: "Select total years of payment" 
+                        },
+                        {
+                          class: "custom-select form-control"
+                        }
+                    %>
                   </div>
                 </div>
-
-                
 
                 <div class="payment-block">
         
@@ -72,22 +91,51 @@
                       <p id="monthly-payment-word" class="form-text text-muted price-in-word"></p>
                     </div>
                   </div>
+
+                  <%# Yearly Payment %>
+                  <div id="yearly-payment-block" class="form-group row">
+                    <label class="col-sm-4 col-4 col-form-label">Yearly Payment</label>
+                    <div class="col-sm-7 col-8">
+                      <p class="form-control-static price">
+                        &#8358; <span id="yearly-payment"></span>
+                      </p>
+                      <p id="yearly-payment-word" class="form-text text-muted price-in-word"></p>
+                    </div>
+                  </div>
+                </div>
+
+                <%# Guarantor 1 %>
+                <div class="form-group row" id="guarantor-one-block">
+                  <label for="guarantor_two_id" class="col-sm-4 col-4 col-form-label">Guarantor 1</label>
+                  <div class="col-sm-7 col-8">
+                    <%= f.select(:guarantor_one_id, @profile.collect {|p| [ p.firstname + " " + p.lastname, p.id ] }, { 
+                         include_blank: "Select Guarantor 1" }, id: "guarantor_one_id", class: "custom-select form-control select2", required: "required") %>
+                  </div>
+                    </div>
+
+                <%# Guarantor 2 %>
+                <div class="form-group row" id="guarantor-two-block">
+                  <label for="guarantor_two_id" class="col-sm-4 col-4 col-form-label">Guarantor 2</label>
+                  <div class="col-sm-7 col-8">
+                    <%= f.select(:guarantor_two_id, @profile.collect {|p| [ p.firstname + " " + p.lastname, p.id ] }, { 
+                        include_blank: "Select Guarantor 2" },  id: "guarantor_two_id", class: "custom-select form-control select2", required: "required") %>
+                  </div>
                 </div>
 
                 <div class="form-check mt-4">
                   <label class="form-check-label">
-                    <input class="form-check-input" type="checkbox" value="">
+                    <input class="form-check-input" type="checkbox" value="agree" id="loan-agreement">
                     I have read and understood the terms and conditions
                   </label>
                 </div>
                 
                 <%# Total Contribution %>
-                <input type="hidden" id="total_contribution" value="150000">
-                
+                <input type="hidden" id="total_contribution" value="<%= @total_contributions %>">
+
                 <%# Submit Button %>
                 <div class="form-group row mt-5">
                   <div class="col-sm-12">
-                    <input type="submit" value="Apply for Loan" class="btn btn-secondary btn-lg">
+                    <%= f.submit "Appy for Loan", { class:"btn btn-secondary btn-lg", id: "loan-button" } %>
                   </div>
                 </div>
               </section>
@@ -105,10 +153,8 @@
               </section>
             </div>
           </div>
-        </form>
+        <% end %>
       </div>
     </div>
   </div>
-
 </section>
-
