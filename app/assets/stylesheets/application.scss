@@ -15,7 +15,7 @@
  *= require_directory .
  *= require_self
  */
-
+@import "plugins/bootstrap/custom";
 @import "puffly";
 
 #puffly {
@@ -61,6 +61,36 @@ body,
   border: 1px solid #ddd;
   margin-bottom: 0;
 }
+
+.card-money {
+  .card-gray {
+    padding: 15px 0 30px;
+    h2 {
+      font-size: 42px;
+      color: $brand-danger;
+      font-weight: 400;
+    }
+    h3 {
+      font-size: 16px;
+      color: $gray;
+    }
+    p {
+      margin: 0;
+      color: #666;
+    }
+  }
+  .money-content {
+    font-size: 1em;
+  }
+  .transparent-header {
+    border-top: transparent;
+    h5 {
+      margin-top: 10px;
+      color: $brand-info;
+    }
+  }
+}
+
 
 .alert {
   margin-top: 30px;
