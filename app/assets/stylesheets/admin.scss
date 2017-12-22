@@ -1,3 +1,82 @@
-// Place all the styles related to the Admin controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "plugins/bootstrap/custom";
+
+.widget {
+  margin-bottom: 30px;
+  transition: all 2s ease-out;
+  .widget-title {
+    border-bottom: 1px solid #e7eaec;
+    padding: 15px 20px;
+    span {
+      padding-top: 5px;
+    }
+    h5 {
+      color: #888;
+      font-weight: 500;
+      font-size: 16px;
+      margin: 0;
+      transition: all .4s ease-out;
+    }
+  }
+
+  .widget-content {
+    padding: 40px 20px;
+    position: relative;
+
+    h1 {
+      font-size: 2.1rem;
+      font-weight: 600;
+      color: #888;
+      transition: all .4s ease-out;
+    }
+    .icon {
+      position: absolute;
+      right: 20px;
+      top: 15px;
+      font-size: 7rem;
+      color: #0275d8;
+      opacity: 0.05;
+      transition: all .4s ease-out;
+
+      &.danger {
+        color: $brand-danger;
+      }
+
+      &.success {
+        color: $brand-success;
+      }
+
+      &.warning {
+        color: $brand-warning;
+      }
+
+    }
+    span {
+      font-weight: 500;
+      color: #999;
+      transition: all .4s ease-out;
+    }
+  }
+
+
+  &:hover {
+    background: #f9f9f9;
+    h1 {
+      color: $red;
+    }
+    h5 {
+      color: $blue;
+    }
+
+    .icon {
+      opacity: 0.1;
+    }
+
+    .widget-content span {
+      color: $blue;
+    }
+
+    .badge {
+      opacity: .7;
+    }
+  }
+}

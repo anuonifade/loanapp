@@ -1,12 +1,47 @@
+@import "plugins/bootstrap/_custom.scss";
+
 .login-box {
-  width: 100%;
-  max-width: 322px;
-  margin: 0 auto;
-  background: #fff;
-  border: solid 1px #d8e2e7;
-  -webkit-border-radius: 5px;
-  border-radius: 5px;
-  padding: 20px;
-  font-size: 1rem;
-  position: relative;
+
+  .login-logo {
+    display: block;
+    margin: 0 auto 10px;
+  }
+  .card {
+    width: 400px;
+    margin: 0 auto;
+    border-radius: 0;
+    padding: 40px 30px;
+    border: 1px solid #95989A;
+  }
+  h3 {
+    text-align: left;
+    font-size: 18px;
+    margin-bottom: 30px;
+  }
+
+  label, .label-text {
+    color: #666;
+    font-size: 12px;
+    margin-bottom: 5px;
+  }
+
+  .forgot-password {
+    color: #aaa;
+
+    &:hover {
+      color: $red;
+    }
+  }
+
+  .form-control {
+    margin-bottom: 15px;
+  }
+
+  .register-now {
+    color: lighten($red, 15%);
+    &:hover {
+      color: $red
+    }
+  }
+
 }

@@ -1,0 +1,2 @@
+module NextOfKinsHelper
+end

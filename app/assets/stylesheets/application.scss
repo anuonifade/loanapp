@@ -9,13 +9,30 @@
  * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
+ *= require toastr
+ *= require select2
+ *= require select2-bootstrap
  *= require_directory .
  *= require_self
  */
-
+@import "plugins/bootstrap/custom";
 @import "puffly";
+
+#puffly {
+  bottom: 80%;
+
+  &, .notice {
+    background-color: #333 !important;
+    z-index: 2000;
+  }
+}
+
 * {
   box-sizing: border-box;
+}
+
+body {
+  font-weight: 400;
 }
 
 html,
@@ -24,21 +41,71 @@ body,
   height: 100%;
 }
 
-.flash-message {
-  width: 200em;
-  font-weight: 400;
-  margin: 0 auto;
-  text-align: center;
-  color: black;
-  background: white;
+.card-table, .table-money-holder {
+  height: 400px;
+  border: 1px solid #ddd;  
+  overflow-y: scroll;
 }
 
-#puffly {
-  background-color: #000 !important;
-  position: absolute !important;
-  padding: 20px;
-  right: 2% !important;
-  bottom: 80%;
-  transform: translate(-50%, 0);
-  font-size: 1em !important;
+.table-money-holder {
+  height: 320px;
+  border: 0;
+  overflow-y: scroll;
+}
+
+.money-content {
+  font-size: 1.2em;
+}
+
+.table-money {
+  border: 1px solid #ddd;
+  margin-bottom: 0;
+}
+
+.card-money {
+  .card-gray {
+    padding: 15px 0 30px;
+    h2 {
+      font-size: 42px;
+      color: $brand-danger;
+      font-weight: 400;
+    }
+    h3 {
+      font-size: 16px;
+      color: $gray;
+    }
+    p {
+      margin: 0;
+      color: #666;
+    }
+  }
+  .money-content {
+    font-size: 1em;
+  }
+  .transparent-header {
+    border-top: transparent;
+    h5 {
+      margin-top: 10px;
+      color: $brand-info;
+    }
+  }
+}
+
+
+.alert {
+  margin-top: 30px;
+}
+
+.toastr {
+  font-size: 13px;
+}
+
+.select2-container--bootstrap .select2-selection--single {
+  border-radius: 0;
+  height: 38px;
+}
+
+.select2-container--bootstrap .select2-selection--single .select2-selection__rendered {
+  padding-top: 2px;
+  color: #333;
 }

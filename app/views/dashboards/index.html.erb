@@ -1,0 +1,156 @@
+<section class="main-content">
+  <div class="container">
+    <h3 class="page-title mb-4">Welcome Back, <%= @user_profile.firstname %></h3>
+    <%= render 'layouts/alerts' %>
+    <div class="row">
+
+      <div class="col-md-6">
+        <%= link_to contributions_path, class: "card tiles red big" do %>
+          <div class="card-body">
+            <h3 class="card-title"> &#8358; <%= to_currency(@total_contribution + @total_loan_repayment) %></h3>
+            <h4 class="card-subtitle mb-3">Total Contributions</h4>
+            <hr>
+            <table class="table">
+              <tbody>
+                <tr>
+                  <td>Total Contribution</td>
+                  <td class="text-right">&#8358; <%= to_currency(@total_contribution + @total_loan_repayment) %></td>
+                </tr>
+                <tr>
+                  <td>Total Loan</td>
+                  <td class="text-right">&#8358; <%= to_currency(@total_loan) %></td>
+                </tr>
+                <tr>
+                  <td>Total Balance</td>
+                  <td class="text-right">&#8358; <%= to_currency((@total_contribution + @total_loan_repayment) - @total_loan) %></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col-md-6">
+            <!-- Card Tiles -->
+            <%= link_to loans_path, class: "card tiles purple" do %>
+              <div class="card-body">
+                <span class="tiles-icon fa fa-credit-card"></span>
+                <h4 class="tiles-link">Apply for Loan</h4>
+              </div>
+            <% end %>
+          </div>
+          <div class="col-md-6">
+            <!-- Card Tiles -->
+            <%= link_to contributions_path, class: "card tiles blue" do %>
+              <div class="card-body">
+                <span class="tiles-icon fa fa-clipboard"></span>
+                <h4 class="tiles-link">Savings History</h4>
+              </div>
+            <% end %>
+            <!-- /.Card Tiles -->
+          </div>
+          <div class="col-md-6">
+            <!-- Card Tiles -->
+            <%= link_to profile_path(@user_id), class: "card tiles green" do %>
+              <div class="card-body">
+                <span class="tiles-icon fa fa-user"></span>
+                <h4 class="tiles-link">My Profile</h4>
+              </div>
+            <% end %>
+            <!-- /.Card Tiles -->
+          </div>
+          <div class="col-md-6">
+            <!-- Card Tiles -->
+            <%= link_to support_path, class: "card tiles orange" do %>
+              <div class="card-body">
+                <span class="tiles-icon fa fa-life-ring"></span>
+                <h4 class="tiles-link">Support</h4>
+              </div>
+            <% end %>
+            <!-- /.Card Tiles -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+          <div class="card">
+            <div class="card-header">
+              Recent Contributions
+              <%= link_to contributions_path, class: "btn btn-secondary pull-right btn-sm" do %>
+                See All
+              <% end %>
+            </div>
+            <% if @monthly_contribution == 0 || @monthly_contribution.nil? %>
+              <div class="card-body">
+                You currently do not have any contribution
+              </div>
+            <% else %>
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th class="text-center">#</th>
+                    <th>Month</th>
+                    <th>Year</th>
+                    <th class="text-center">Amount</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @monthly_contribution.each_with_index do |cb, index| %>
+                    <tr>
+                      <th scope="row" class="text-center"><%= index + 1 %></th>
+                      <td><%= cb[:month] %></td>
+                      <td><%= cb[:year] %></td>
+                      <td class="text-center"><%= to_currency(cb[:amount]) %></td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            <% end %>
+          </div>
+      </div>
+      <div class="col-md-6">
+          <div class="card">
+            <div class="card-header">
+              Recent Loans
+              <%= link_to recent_loans_path, class: "btn btn-secondary pull-right btn-sm" do %>
+                See All
+              <% end %>
+            </div>
+
+            <% if @monthly_loan_repayment.empty? %>
+              <div class="card-body">
+                You currently do not have any loan you are repaying
+              </div>
+            <% else %>
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th class="text-center">#</th>
+                    <th>Month</th>
+                    <th>Year</th>
+                    <th class="text-center">Amount</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @monthly_loan_repayment.each_with_index do |rp, index| %>
+                    <tr>
+                      <th scope="row" class="text-center"><%= index + 1 %></th>
+                      <td><%= rp[:month] %></td>
+                      <td><%= rp[:year] %></td>
+                      <td class="text-center"><%= to_currency(rp[:amount]) %></td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            <% end %>
+          </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
