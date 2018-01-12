@@ -1,5 +1,3 @@
-@import "plugins/bootstrap/custom";
-
 .navigation {
   position: fixed;
   right: 0;
@@ -41,19 +39,12 @@
 .main-navigation .nav-item {
   font-size: 13px;
   margin: 8px 20px 5px 0;
-  font-weight: 400;
+  font-weight: 500;
   text-transform: uppercase;
 }
 
 .nav-item a {
   color: #2b3d51;
-  transition: all .4s ease-out;
-  &:hover {
-    color: $red;
-  }
-  &.active {
-    color: darken($red, 10%);
-  }
 }
 
 .dropdown-item {

@@ -14,7 +14,7 @@
 // Start with assigning color names to specific hex values.
 $white:  #fff;
 $black:  #000;
-$red:    #c72422;
+$red2:    #c72422;
 $orange: #e67e22;
 $yellow: #f1c40f;
 $green:  #16a085;
@@ -28,7 +28,7 @@ $gray-dark:                 #292b2c;
 $gray:                      #464a4c;
 $gray-light:                #636c72;
 $gray-lighter:              #eceeef;
-$gray-lightest:             #f5f5f5;
+$gray-lightest:             #f7f7f9;
 
 // Reassign color vars to semantic color scheme
 $brand-primary:             $teal;
@@ -66,28 +66,6 @@ $font-family-serif:      Georgia, "Times New Roman", Times, serif;
 $font-family-monospace:  Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 $font-family-base:       $font-family-sans-serif;
 
-
-$border-radius:                  .1rem;
-$border-radius-lg:               .2rem;
-$border-radius-sm:               .07rem;
-// Allows for customizing button radius independently from global border radius
-$btn-border-radius:              $border-radius;
-$btn-border-radius-lg:           $border-radius-lg;
-$btn-border-radius-sm:           $border-radius-sm;
-$input-border-radius:            $border-radius;
-$input-border-radius-lg:         $border-radius-lg;
-$input-border-radius-sm:         $border-radius-sm;
-$custom-checkbox-radius:         $border-radius;
-$custom-select-border-radius:    $border-radius;
-$custom-file-border-radius:      $border-radius;
-$navbar-border-radius:           $border-radius;
-$navbar-toggler-border-radius:   $btn-border-radius;
-$nav-tabs-border-radius:         $border-radius;
-$nav-pills-border-radius:        $border-radius;
-$badge-pill-border-radius:       10rem;
-$alert-border-radius:            $border-radius;
-$progress-border-radius:         $border-radius;
-$list-group-border-radius:       $border-radius;
 // Buttons
 //
 // For each of Bootstrap's buttons, define text, background and border color.
@@ -117,19 +95,3 @@ $btn-danger-bg:                  $brand-danger;
 $btn-danger-border:              $btn-danger-bg;
 
 $btn-link-disabled-color:        $gray-light;
-
-$btn-block-spacing-y:            .5rem;
-$btn-toolbar-margin:             .5rem;
-
-
-$btn-transition:                 all .4s ease-in-out;
-
-$font-size-base: 0.9rem; 
-
-// Forms
-
-$input-padding-x:                .75rem;
-$input-padding-y:                .7rem;
-$input-line-height:              1.25;
-
-$input-color-placeholder:        #bbb;
