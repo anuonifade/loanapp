@@ -1,2 +1,361 @@
-<h1>Admin#index</h1>
-<p>Find me in app/views/admin/index.html.erb</p>
+<section class="main-content">
+  <div class="container">
+    <h3 class="page-title mb-4">Administrator Dashboard</h3>
+
+    <div class="row">
+      <div class="col-md-3">
+        <%= link_to admin_month_details_path, class: "card widget" do %>
+          <div class="widget-title">
+            <span class="badge badge-primary pull-right"> 15 People</span>
+            <h5>Contributions</h5>
+          </div>
+          <div class="widget-content">
+            <div class="pull-right"> <i class="icon fa fa-money"></i></div>
+            <h1 class="no-margins">41,5493</h1>
+            <span>This Month</span>                            
+          </div>
+        <% end %>
+      </div>
+      
+      <div class="col-md-3">
+        <%= link_to admin_month_details_path, class: "card widget" do %>
+          <div class="widget-title">
+            <span class="badge badge-danger pull-right"> 15 People</span>
+            <h5>Loans</h5>
+          </div>
+          <div class="widget-content">
+            <div class="pull-right"> <i class="icon danger fa fa-credit-card"></i></div>
+            <h1 class="no-margins">25,000,000</h1>
+            <span>This Month</span>                            
+          </div>
+        <% end %>
+      </div>
+      
+      <div class="col-md-3">
+        <%= link_to admin_application_details_path, class: "card widget" do %>
+          <div class="widget-title">
+            <span class="badge badge-success pull-right"> Granted </span>
+            <h5>Applications</h5>
+          </div>
+          <div class="widget-content">
+            <div class="pull-right"> <i class="icon success fa fa-check-square-o"></i></div>
+            <h1 class="no-margins">8</h1>
+            <span>This Month</span>                            
+          </div>
+        <% end %>
+      </div>
+      
+      <div class="col-md-3">
+        <%= link_to admin_application_details_path, class: "card widget" do %>
+          <div class="widget-title">
+            <span class="badge badge-warning pull-right"> Pending </span>
+            <h5>Applications</h5>
+          </div>
+          <div class="widget-content">
+            <div class="pull-right"> <i class="icon warning fa fa-inbox"></i></div>
+            <h1 class="no-margins">25</h1>
+            <span>This Month</span>                            
+          </div>
+        <% end %>
+      </div>
+      
+    </div>
+
+    <div class="row">
+
+      <div class="col-md-9">
+        <section class="card tiles white big chart" id="loan-vs-contribution-graph">
+          <div class="card-body">
+          
+            <div class="chart-container" style="position: relative; height:400px; width:100%">
+                <canvas id="myChart"></canvas>
+            </div>
+            <script>
+            var ctx = document.getElementById("myChart").getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                  labels: ["January", "February", "March", "April", "May", "June", "July"],
+                  datasets: [
+                      {
+                          label: 'Contributions',
+                          data: [52000, 62000, 67000, 64000, 57000, 77000, 54000],
+                          backgroundColor: 'rgba(41, 128, 185, 0.2)',
+                          borderColor: 'rgba(41, 128, 185, 1)',
+                          borderWidth: 1
+                      },
+                      {
+                          label: 'Loans',
+                          data: [38000, 54000, 64000, 62000, 59000, 68000, 59000],
+                          backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                          borderColor: 'rgba(255,99,132,1)',
+                          borderWidth: 1
+                      }
+                  ]
+                },
+                options: {
+                    layout: {
+                        padding: {
+                            left: 15,
+                            right: 15,
+                            top: 30,
+                            bottom: 30
+                        }
+                    }
+                }
+            });
+            </script>
+          </div>
+        </section>
+      </div>
+
+      <div class="col-md-3">
+        <div class="row">
+          <div class="col-md-12">
+            <!-- Card Tiles -->
+            <%= link_to admin_total_contributions_path, class: "card tiles blue" do %>
+              <div class="card-body">
+                <span class="tiles-icon fa fa-money"></span>
+                <h4 class="tiles-link">
+                  Total Contributions
+                  <div>1,500,000,000</div>
+                </h4>
+              </div>
+            <% end %>
+            <!-- /.Card Tiles -->
+          </div>
+          <div class="col-md-12">
+            <!-- Card Tiles -->
+            <%= link_to admin_total_loans_path, class: "card tiles blue" do %>
+              <div class="card-body">
+                <span class="tiles-icon fa fa-credit-card"></span>
+                <h4 class="tiles-link">
+                  Total Loan
+                  <div>500,000,000</div>
+                </h4>
+              </div>
+            <% end %>
+            <!-- /.Card Tiles -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-9">
+        <div class="card card-tab">
+          <!-- Nav tabs -->
+          <ul  class="nav nav-pills" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" data-toggle="tab" href="#home" role="tab">Recent Contributions <span class="badge"> 5 </span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" href="#profile" role="tab">Recent Loan <span class="badge"> 8 </span></a>
+            </li>
+          </ul> 
+
+          <!-- Tab panes -->
+          <div class="card-body tab-content">
+            <div class="tab-pane fade active show" id="home">
+              <div class="card-table">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th class="text-center" style="width: 10%">#</th>
+                      <th style="width: 20%">Date</th>
+                      <th style="width: 30%">Name</th>
+                      <th class="text-center" style="width: 20%">Amount</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="text-center">1</td>
+                      <td>12-07-2017</td>
+                      <td>Haruna Popoola</td>
+                      <td class="text-center">15,000</td>
+                      <td>
+                        <button type="button" class="btn btn-outline-info btn-round" data-toggle="tooltip" data-placement="top" title="View Details"><span class="fa fa-external-link-square"></span></button>
+                        <button type="button" class="btn btn-outline-primary btn-round" data-toggle="tooltip" data-placement="top" title="Approve"><span class="fa fa-check"></span></button>
+                        <button type="button" class="btn btn-outline-danger btn-round"data-toggle="tooltip" data-placement="top" title="Disapprove"><span class="fa fa-times"></span></button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-center">2</td>
+                      <td>12-07-2017</td>
+                      <td>Haruna Popoola</td>
+                      <td class="text-center">15,000</td>
+                      <td>
+                        <button type="button" class="btn btn-outline-info btn-round" data-toggle="tooltip" data-placement="top" title="View Details"><span class="fa fa-external-link-square"></span></button>
+                        <button type="button" class="btn btn-outline-primary btn-round" data-toggle="tooltip" data-placement="top" title="Approve"><span class="fa fa-check"></span></button>
+                        <button type="button" class="btn btn-outline-danger btn-round"data-toggle="tooltip" data-placement="top" title="Disapprove"><span class="fa fa-times"></span></button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-center">3</td>
+                      <td>12-07-2017</td>
+                      <td>Haruna Popoola</td>
+                      <td class="text-center">15,000</td>
+                      <td>
+                        <button type="button" class="btn btn-outline-info btn-round" data-toggle="tooltip" data-placement="top" title="View Details"><span class="fa fa-external-link-square"></span></button>
+                        <button type="button" class="btn btn-outline-primary btn-round" data-toggle="tooltip" data-placement="top" title="Approve"><span class="fa fa-check"></span></button>
+                        <button type="button" class="btn btn-outline-danger btn-round"data-toggle="tooltip" data-placement="top" title="Disapprove"><span class="fa fa-times"></span></button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-center">4</td>
+                      <td>12-07-2017</td>
+                      <td>Haruna Popoola</td>
+                      <td class="text-center">15,000</td>
+                      <td>
+                        <button type="button" class="btn btn-outline-info btn-round" data-toggle="tooltip" data-placement="top" title="View Details"><span class="fa fa-external-link-square"></span></button>
+                        <button type="button" class="btn btn-outline-primary btn-round" data-toggle="tooltip" data-placement="top" title="Approve"><span class="fa fa-check"></span></button>
+                        <button type="button" class="btn btn-outline-danger btn-round"data-toggle="tooltip" data-placement="top" title="Disapprove"><span class="fa fa-times"></span></button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-center">5</td>
+                      <td>12-07-2017</td>
+                      <td>Haruna Popoola</td>
+                      <td class="text-center">15,000</td>
+                      <td>
+                        <button type="button" class="btn btn-outline-info btn-round" data-toggle="tooltip" data-placement="top" title="View Details"><span class="fa fa-external-link-square"></span></button>
+                        <button type="button" class="btn btn-outline-primary btn-round" data-toggle="tooltip" data-placement="top" title="Approve"><span class="fa fa-check"></span></button>
+                        <button type="button" class="btn btn-outline-danger btn-round"data-toggle="tooltip" data-placement="top" title="Disapprove"><span class="fa fa-times"></span></button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="profile">
+              <div class="card-table">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th class="text-center" style="width: 10%">#</th>
+                      <th style="width: 20%">Date</th>
+                      <th style="width: 30%">Name</th>
+                      <th class="text-center" style="width: 20%">Amount</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="text-center">1</td>
+                      <td>12-07-2017</td>
+                      <td>Haruna Popoola</td>
+                      <td class="text-center">15,000</td>
+                      <td>
+                        <button type="button" class="btn btn-outline-info btn-round" data-toggle="tooltip" data-placement="top" title="View Details"><span class="fa fa-external-link-square"></span></button>
+                        <button type="button" class="btn btn-outline-primary btn-round" data-toggle="tooltip" data-placement="top" title="Approve"><span class="fa fa-check"></span></button>
+                        <button type="button" class="btn btn-outline-danger btn-round"data-toggle="tooltip" data-placement="top" title="Disapprove"><span class="fa fa-times"></span></button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-center">2</td>
+                      <td>12-07-2017</td>
+                      <td>Haruna Popoola</td>
+                      <td class="text-center">15,000</td>
+                      <td>
+                        <button type="button" class="btn btn-outline-info btn-round" data-toggle="tooltip" data-placement="top" title="View Details"><span class="fa fa-external-link-square"></span></button>
+                        <button type="button" class="btn btn-outline-primary btn-round" data-toggle="tooltip" data-placement="top" title="Approve"><span class="fa fa-check"></span></button>
+                        <button type="button" class="btn btn-outline-danger btn-round"data-toggle="tooltip" data-placement="top" title="Disapprove"><span class="fa fa-times"></span></button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-center">3</td>
+                      <td>12-07-2017</td>
+                      <td>Haruna Popoola</td>
+                      <td class="text-center">15,000</td>
+                      <td>
+                        <button type="button" class="btn btn-outline-info btn-round" data-toggle="tooltip" data-placement="top" title="View Details"><span class="fa fa-external-link-square"></span></button>
+                        <button type="button" class="btn btn-outline-primary btn-round" data-toggle="tooltip" data-placement="top" title="Approve"><span class="fa fa-check"></span></button>
+                        <button type="button" class="btn btn-outline-danger btn-round"data-toggle="tooltip" data-placement="top" title="Disapprove"><span class="fa fa-times"></span></button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-center">4</td>
+                      <td>12-07-2017</td>
+                      <td>Haruna Popoola</td>
+                      <td class="text-center">15,000</td>
+                      <td>
+                        <button type="button" class="btn btn-outline-info btn-round" data-toggle="tooltip" data-placement="top" title="View Details"><span class="fa fa-external-link-square"></span></button>
+                        <button type="button" class="btn btn-outline-primary btn-round" data-toggle="tooltip" data-placement="top" title="Approve"><span class="fa fa-check"></span></button>
+                        <button type="button" class="btn btn-outline-danger btn-round"data-toggle="tooltip" data-placement="top" title="Disapprove"><span class="fa fa-times"></span></button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-center">5</td>
+                      <td>12-07-2017</td>
+                      <td>Haruna Popoola</td>
+                      <td class="text-center">15,000</td>
+                      <td>
+                        <button type="button" class="btn btn-outline-info btn-round" data-toggle="tooltip" data-placement="top" title="View Details"><span class="fa fa-external-link-square"></span></button>
+                        <button type="button" class="btn btn-outline-primary btn-round" data-toggle="tooltip" data-placement="top" title="Approve"><span class="fa fa-check"></span></button>
+                        <button type="button" class="btn btn-outline-danger btn-round"data-toggle="tooltip" data-placement="top" title="Disapprove"><span class="fa fa-times"></span></button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-center">6</td>
+                      <td>12-07-2017</td>
+                      <td>Haruna Popoola</td>
+                      <td class="text-center">15,000</td>
+                      <td>
+                        <button type="button" class="btn btn-outline-info btn-round" data-toggle="tooltip" data-placement="top" title="View Details"><span class="fa fa-external-link-square"></span></button>
+                        <button type="button" class="btn btn-outline-primary btn-round" data-toggle="tooltip" data-placement="top" title="Approve"><span class="fa fa-check"></span></button>
+                        <button type="button" class="btn btn-outline-danger btn-round"data-toggle="tooltip" data-placement="top" title="Disapprove"><span class="fa fa-times"></span></button>
+                      </td>
+                    </tr>
+                    <tr>
+                    </tr>
+                    <tr>
+                      <td class="text-center">7</td>
+                      <td>12-07-2017</td>
+                      <td>Haruna Popoola</td>
+                      <td class="text-center">15,000</td>
+                      <td>
+                        <button type="button" class="btn btn-outline-info btn-round" data-toggle="tooltip" data-placement="top" title="View Details"><span class="fa fa-external-link-square"></span></button>
+                        <button type="button" class="btn btn-outline-primary btn-round" data-toggle="tooltip" data-placement="top" title="Approve"><span class="fa fa-check"></span></button>
+                        <button type="button" class="btn btn-outline-danger btn-round"data-toggle="tooltip" data-placement="top" title="Disapprove"><span class="fa fa-times"></span></button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-center">8</td>
+                      <td>12-07-2017</td>
+                      <td>Haruna Popoola</td>
+                      <td class="text-center">15,000</td>
+                      <td>
+                        <button type="button" class="btn btn-outline-info btn-round" data-toggle="tooltip" data-placement="top" title="View Details"><span class="fa fa-external-link-square"></span></button>
+                        <button type="button" class="btn btn-outline-primary btn-round" data-toggle="tooltip" data-placement="top" title="Approve"><span class="fa fa-check"></span></button>
+                        <button type="button" class="btn btn-outline-danger btn-round"data-toggle="tooltip" data-placement="top" title="Disapprove"><span class="fa fa-times"></span></button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="row">
+          <div class="col-md-12">
+            <!-- Card Tiles -->
+            <%= link_to admin_all_users_path, class: "card tiles green" do %>
+              <div class="card-body">
+                <span class="tiles-icon fa fa-user"></span>
+                <h4 class="tiles-link">
+                  Registered Users
+                  <div>250 Staffs</div>
+                </h4>
+              </div>
+            <% end %>
+            <!-- /.Card Tiles -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
