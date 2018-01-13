@@ -1,0 +1,187 @@
+<div class="flash-message">
+  <% if flash[:notice] %>
+    <%= content_tag :span, flash[:notice], class: "notice", id: "puffly" %>
+  <% end %>
+</div>
+<section class="main-content">
+  <div class="container">
+    <h3 class="h4 mt-3 mb-4">Welcome Back, Anuoluwapo</h3>
+
+    <div class="row">
+
+      <div class="col-md-6">
+        <a class="card tiles red big" href="#">
+          <div class="card-body">
+            <h3 class="card-title"> &#8358; 150, 000</h3>
+            <h4 class="card-subtitle mb-3">Total Contributions</h4>
+            <hr>
+            <table class="table">
+              <tbody>
+                <tr>
+                  <td>Current Savings</td>
+                  <td class="text-right">15,000</td>
+                </tr>
+                <tr>
+                  <td>Loan Repayment</td>
+                  <td class="text-right">20,000</td>
+                </tr>
+                <tr>
+                  <td>Balance</td>
+                  <td class="text-right">5,000</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col-md-6">
+            <!-- Card Tiles -->
+            <a class="card tiles purple" href="#">
+              <div class="card-body">
+                <span class="tiles-icon fa fa-credit-card"></span>
+                <h4 class="tiles-link">Apply for Loan</h4>
+              </div>
+            </a>
+            <!-- /.Card Tiles -->
+          </div>
+          <div class="col-md-6">
+            <!-- Card Tiles -->
+            <a class="card tiles blue" href="#">
+              <div class="card-body">
+                <span class="tiles-icon fa fa-clipboard"></span>
+                <h4 class="tiles-link">Savings History</h4>
+              </div>
+            </a>
+            <!-- /.Card Tiles -->
+          </div>
+          <div class="col-md-6">
+            <!-- Card Tiles -->
+            <a class="card tiles green" href="#">
+              <div class="card-body">
+                <span class="tiles-icon fa fa-user"></span>
+                <h4 class="tiles-link">My Profile</h4>
+              </div>
+            </a>
+            <!-- /.Card Tiles -->
+          </div>
+          <div class="col-md-6">
+            <!-- Card Tiles -->
+            <a class="card tiles orange" href="#">
+              <div class="card-body">
+                <span class="tiles-icon fa fa-life-ring"></span>
+                <h4 class="tiles-link">Support</h4>
+              </div>
+            </a>
+            <!-- /.Card Tiles -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+          <div class="card">
+            <div class="card-header">
+              Recent Contributions
+              <a class="btn btn-secondary pull-right btn-sm">See All</a>
+            </div>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th class="text-center">#</th>
+                  <th>Date</th>
+                  <th class="text-center">Amount</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row" class="text-center">1</th>
+                  <td>12-07-2017</td>
+                  <td class="text-center">15,000</td>
+                </tr>
+                <tr>
+                  <th scope="row" class="text-center">2</th>
+                  <td>12-07-2017</td>
+                  <td class="text-center">15,000</td>
+                </tr>
+                <tr>
+                  <th scope="row" class="text-center">3</th>
+                  <td>12-07-2017</td>
+                  <td class="text-center">15,000</td>
+                </tr>
+                <tr>
+                  <th scope="row" class="text-center">4</th>
+                  <td>12-07-2017</td>
+                  <td class="text-center">15,000</td>
+                </tr>
+                <tr>
+                  <th scope="row" class="text-center">5</th>
+                  <td>12-07-2017</td>
+                  <td class="text-center">15,000</td>
+                </tr>
+                <tr>
+                  <th scope="row" class="text-center">6</th>
+                  <td>12-07-2017</td>
+                  <td class="text-center">15,000</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+      </div>
+      <div class="col-md-6">
+          <div class="card">
+            <div class="card-header">
+              Recent Loans
+              <a class="btn btn-secondary pull-right btn-sm">See All</a>
+            </div>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th class="text-center">#</th>
+                  <th>Date</th>
+                  <th class="text-center">Amount</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row" class="text-center">1</th>
+                  <td>12-07-2017</td>
+                  <td class="text-center">15,000</td>
+                </tr>
+                <tr>
+                  <th scope="row" class="text-center">2</th>
+                  <td>12-07-2017</td>
+                  <td class="text-center">15,000</td>
+                </tr>
+                <tr>
+                  <th scope="row" class="text-center">3</th>
+                  <td>12-07-2017</td>
+                  <td class="text-center">15,000</td>
+                </tr>
+                <tr>
+                  <th scope="row" class="text-center">4</th>
+                  <td>12-07-2017</td>
+                  <td class="text-center">15,000</td>
+                </tr>
+                <tr>
+                  <th scope="row" class="text-center">5</th>
+                  <td>12-07-2017</td>
+                  <td class="text-center">15,000</td>
+                </tr>
+                <tr>
+                  <th scope="row" class="text-center">6</th>
+                  <td>12-07-2017</td>
+                  <td class="text-center">15,000</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+

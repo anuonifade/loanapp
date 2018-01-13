@@ -1,11 +1,11 @@
   <section>
-    <div class="login-box">
+    <div class="container-fluid">
 
       <div class="text-center">
-        <%= image_tag "logo.png", alt: "NNPC Depot Logo", height: "40", class: "login-logo"  %>
+        <%= image_tag "logo.png", alt: "NNPC Depot Logo", height: "40"  %>
       </div>
 
-      <div class="card">
+      <div class="login-box">
         <div class="flash-message">
           <% if flash[:notice] %>
             <%= content_tag :span, flash[:notice], class: "notice", id: "puffly" %>
@@ -14,51 +14,47 @@
         <div class="login-signin">
           <div class="row">
             <div class="col-12 text-center">
-              <h3>Registration Page</h3>
+              <h6 class="text-muted text-uppercase">Register to start applying for loan</h6>
             </div>
           </div>
           <%= form_with(model: user, local: true) do |form| %>
             <div class="form-group row">
               <div class="col-12">
-                <%= form.label :username, 'Staff ID' %>
-                <%= form.text_field :username, id: :username, class: 'form-control', placeholder: 'Staff ID', autofocus:true, required: true %>
+                <%= form.text_field :username, id: :user_username, class: 'form-control', placeholder: 'Staff ID', autofocus:true, required: true%>
               </div>
             </div>
 
             <div class="form-group row">
               <div class="col-12">
-                <%= form.label :email, 'Email' %>
-                <%= form.text_field :email, id: :user_email, class: 'form-control', placeholder: 'Email' , required: true %>
+                <%= form.text_field :email, id: :user_email, class: 'form-control', placeholder: 'Email' , required: true%>
               </div>
             </div>
 
             <div class="form-group row">
               <div class="col-12">
-                <%= form.label :password, 'Password' %>
-                <%= form.password_field :password, id: :password, class: "form-control", placeholder: "Password", required: true %>
+                <%= password_field_tag :password, params[:password], class: "form-control", placeholder: "Password", required: true %>
               </div>
             </div>
 
             <div class="form-group row">
               <div class="col-12">
-                <%= form.label :password_confirmation, 'Confirm Password' %>
-                <%= form.password_field :password_confirmation, id: :password_confirmation, class: 'form-control', placeholder: 'Confirm password', required: true %>
+                <%= form.password_field :password_confirmation, id: :user_password_confirmation, class: 'form-control', placeholder: 'Confirm password', required: true %>
               </div>
             </div>
 
             <div class="form-group">
-              <%= form.check_box :terms, id: :terms, required: true %>
-              <%= form.label :terms, 'I read and agreed to the' %> <a href="javascript:void(0);">terms of conditions</a>
+              <input type="checkbox" name="terms" id="terms" required>
+              <label for="terms">I read and agreed to the <a href="javascript:void(0);">terms of conditions</a>.</label>
             </div>
 
             <div class="form-group text-center row mt-2">
               <div class="col-12">
-                <%= form.submit "Register", :class => "btn btn-block btn-info"%>
+                <%= form.submit "Register", :class => 'btn btn-block btn-lg bg-pink waves-effect'%>
               </div>
             </div>
 
-            <div class="m-t-25 align-center">
-              <a href="/login" class="label-text register-now">Already Registered? Login now</a>
+            <div class="m-t-25 m-b--5 align-center">
+              <a href="/login">You already Registered?</a>
             </div>
           <% end %>
 
