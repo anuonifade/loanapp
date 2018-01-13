@@ -27,7 +27,9 @@ class DashboardsController < ApplicationController
 
   def total_loan
     unless @user_profile.nil?
-      @total_loan = (@user_profile.loans.all.count >= 1) ? @user_profile.loans.all.sum(:amount) : 0.00
+      user_loans = (@user_profile.loans.all.count >= 1) ? @user_profile.loans.where(status: :approved) : nil
+      @total_loan = 0.00
+      @total_loan = user_loans.all.sum(:amount) unless user_loans.nil?
     end
   end
 

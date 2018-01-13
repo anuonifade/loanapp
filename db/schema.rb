@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171221115733) do
+ActiveRecord::Schema.define(version: 20171221190654) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,8 +60,6 @@ ActiveRecord::Schema.define(version: 20171221115733) do
     t.datetime "updated_at", null: false
     t.integer "guarantor_one_id"
     t.integer "guarantor_two_id"
-    t.integer "guarantor_one_approved"
-    t.integer "guarantor_two_approved"
     t.string "start_month"
     t.integer "start_year"
     t.decimal "amount", precision: 20, scale: 2
@@ -71,11 +69,13 @@ ActiveRecord::Schema.define(version: 20171221115733) do
     t.decimal "yearly_deduction"
     t.boolean "finished_payment", default: false
     t.datetime "finished_payment_date"
-    t.boolean "approved", default: false
     t.integer "approved_by"
     t.datetime "approved_date"
     t.datetime "guarantor_one_approved_date"
     t.datetime "guarantor_two_approved_date"
+    t.integer "guarantor_one_status", default: 1
+    t.integer "guarantor_two_status", default: 1
+    t.integer "status", default: 1
     t.index ["loan_type_id"], name: "index_loans_on_loan_type_id"
     t.index ["profile_id"], name: "index_loans_on_profile_id"
   end

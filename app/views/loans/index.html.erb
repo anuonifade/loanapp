@@ -147,13 +147,63 @@
                 <h5 class="primary-header">Terms and Conditions</h5>
                 <ul>
                   <li> The loan shall be subject to Management Committee Approval</li>
-                  <li>Your net pay must be able to accommodate the monthly deduction</li>
+                  <li> Your net pay must be able to accommodate the monthly deduction</li>
                   <li> The Society reserves the right to grant or reject any application.</li>
                 </ul>
               </section>
             </div>
           </div>
         <% end %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <b>Loan applications</b>
+            <a href="#" class= "pull-right">
+              <i class="chevron-right">
+            </a>
+          </div>
+          <% if @all_loan_applications.empty? %>
+            <div class="card-body">
+              You do not have any loan application
+            </div>
+          <% else %>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Loan Amount</th>
+                  <th>Amount with Interest</th>
+                  <th>Monthly Payment</th>
+                  <th>Approval Status</th>
+                  <th>Date Applied</th>
+                  <th class="text-center">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @all_loan_applications.each_with_index do |la, index| %>
+                  <tr>
+                    <td scope="row" class="text-center"><%= index + 1 %></td>
+                    <td><%= to_currency(la[:amount]) %></td>
+                    <td><%= to_currency(la[:expected_amount]) %></td>
+                    <td><%= to_currency(la[:monthly_deduction]) %></td>
+                    <td><%= la[:status] %></td>
+                    <td><%= la[:created_at] %></td>
+                    <td class="text-center">
+                      <a href=#>View</a> 
+                      <% if la[:status] == 'pending' %> 
+                        | <a href=#>Edit</a> | 
+                        <a href=#>Delete</a>
+                      <% end %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>

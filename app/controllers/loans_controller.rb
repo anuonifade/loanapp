@@ -1,4 +1,6 @@
 class LoansController < ApplicationController
+  include DashboardsHelper
+  before_action :get_loan_applications, only: [:index]
 
   def load_initial
     @loan_types = LoanType.all
@@ -61,7 +63,7 @@ class LoansController < ApplicationController
       @loan[:yearly_deduction] = ((@loan[:expected_amount] / duration) * 12).ceil
     else
       @loan[:monthly_deduction] = (@loan[:expected_amount] / duration).ceil
-      @loan[:yearly_deduction] = (@loan[:expected_amount] / duration).ceil
+      @loan[:yearly_deduction] = 0
     end
 
     # Ensure that the guarantors are valid
@@ -79,10 +81,18 @@ class LoansController < ApplicationController
     end
   end
 
-  def loan_params
-    params.require(:loan).permit(
-      :amount, :yearly_deduction, :loan_type_id, :duration, :guarantor_one_id, :guarantor_two_id
-    )
-  end
+  
+
+  private
+
+    def loan_params
+      params.require(:loan).permit(
+        :amount, :yearly_deduction, :loan_type_id, :duration, :guarantor_one_id, :guarantor_two_id
+      )
+    end
+
+    def get_loan_applications
+      @all_loan_applications = Loan.where("profile_id = ?", @user_profile.id).all
+    end
 
 end

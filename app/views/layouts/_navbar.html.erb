@@ -1,10 +1,10 @@
 <% if admin? %>
   <%= navigation_menu('Home', admin_index_path, 'home') %>
-  <%= navigation_menu('Manage Loans', loans_path, 'circle-o') %>
-  <%= navigation_menu('Manage Contributions', contributions_path, 'calendar') %>
-  <%= navigation_menu('Manage Users', contributions_path, 'users') %>
+  <%= navigation_menu('Manage Loans', admin_loans_path, 'circle-o') %>
+  <%= navigation_menu('Manage Contributions', admin_contributions_path, 'calendar') %>
+  <%= navigation_menu('Manage Users', admin_users_path, 'users') %>
   <% if super_admin? %>
-    <%= navigation_menu('Manage Admins', admin_index_path, 'users') %>
+    <%= navigation_menu('Manage Admins', admin_admin_users_path, 'users') %>
   <% end %>
 <% else %>
   <%= navigation_menu('Home', root_path, 'home') %>

@@ -18,11 +18,11 @@
                 </tr>
                 <tr>
                   <td>Total Loan</td>
-                  <td class="text-right">&#8358; <%= to_currency(@total_loan) %></td>
+                  <td class="text-right">&#8358; <%= to_currency(@total_loan) unless @total_loan.nil? %></td>
                 </tr>
                 <tr>
                   <td>Total Balance</td>
-                  <td class="text-right">&#8358; <%= to_currency((@total_contribution + @total_loan_repayment) - @total_loan) %></td>
+                  <td class="text-right">&#8358; <%= to_currency((@total_contribution + @total_loan_repayment) - @total_loan) unless @total_loan.nil? %></td>
                 </tr>
               </tbody>
             </table>
@@ -46,7 +46,7 @@
             <%= link_to contributions_path, class: "card tiles blue" do %>
               <div class="card-body">
                 <span class="tiles-icon fa fa-clipboard"></span>
-                <h4 class="tiles-link">Savings History</h4>
+                <h4 class="tiles-link">Contributions History</h4>
               </div>
             <% end %>
             <!-- /.Card Tiles -->
@@ -115,7 +115,7 @@
       <div class="col-md-6">
           <div class="card">
             <div class="card-header">
-              Recent Loans
+              Recent Loan Repayments
               <%= link_to recent_loans_path, class: "btn btn-secondary pull-right btn-sm" do %>
                 See All
               <% end %>

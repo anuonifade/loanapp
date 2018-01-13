@@ -1,6 +1,7 @@
 class Loan < ApplicationRecord
   belongs_to :profile
   belongs_to :loan_type
+
   has_many :loan_repayments, dependent: :destroy
   accepts_nested_attributes_for :loan_repayments
 
@@ -13,4 +14,8 @@ class Loan < ApplicationRecord
   validates :profile, presence: true
   validates :guarantor_one_id, presence: true
   validates :guarantor_two_id, presence: true
+
+  enum status: [:rejected, :pending, :approved], _suffix: true
+  enum guarantor_one_status: [:rejected, :pending, :approved], _suffix: true
+  enum guarantor_two_status: [:rejected, :pending, :approved], _suffix: true
 end
