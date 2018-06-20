@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     get "/total-contributions" => "admin#total_contributions", as: "admin_total_contributions" 
     get "/total-loans" => "admin#total_loans", as: "admin_total_loans"
     get "/all-users" => "admin#all_users", as: "admin_all_users"
+    get "/admin-users" => "admin#admin_users", as: "admin_admin_users"
   end
   resources :admin
   resources :contributions

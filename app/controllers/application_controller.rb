@@ -1,10 +1,10 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  before_action :authenticate, :set_user
+  before_action :authenticate
   after_action :clear_xhr_flash
   
   protected
-  
+
   def authenticate
     if cookies[:user_info]
       user_info = cookies.encrypted[:user_info]
@@ -17,6 +17,7 @@ class ApplicationController < ActionController::Base
 
   def authorize(user_info)
     session[:current_user_info] = user_info
+    set_user
   end
 
   def clear_xhr_flash
@@ -27,13 +28,10 @@ class ApplicationController < ActionController::Base
 
   private
 
-    def set_user
-      if session[:current_user_info]
-        @user_id = session[:current_user_info]["id"] || nil
-        @staff_id = session[:current_user_info]["username"] || nil
-        @user_email = session[:current_user_info]["email"] || nil
-        @user_profile = Profile.find_by(user_id: @user_id)
-      end
-    end
-
+  def set_user
+    @user_id ||= session[:current_user_info]['id']
+    @staff_id ||= session[:current_user_info]['username']
+    @user_email ||= session[:current_user_info]['email']
+    @user_profile ||= Profile.find_by(user_id: @user_id)
+  end
 end
