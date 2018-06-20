@@ -2,7 +2,6 @@ class ProfilesController < ApplicationController
   before_action :set_profile, only: [:edit, :update_profile, :show]
   before_action :profile_params, only: [:update_profile]
 
-
   def show
     
   end
