@@ -25,5 +25,4 @@ class SessionsController < ApplicationController
     cookies.delete :user_info, domain: request.domain
     redirect_to login_url, alert: "Successfully logged out"
   end
-  
 end
