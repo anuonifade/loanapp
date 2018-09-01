@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
-  skip_before_action :authenticate, only: [:new, :create]
+  skip_before_action :authenticate, :redirect_non_activated_user, only: [:new, :create]
 
   # GET /users
   # GET /users.json
   def new
-    if cookies[:user_info]
+    if cookies[:user_info] && activated?
       redirect_to root_url
     end
     @user = User.new
@@ -19,11 +19,10 @@ class UsersController < ApplicationController
       @user = User.new(user_params)
 
       if @user.save
-        cookies.encrypted[:user_info] = @user
-        flash[:notice] = "Registration Successful"
-        redirect_to root_url 
+        flash[:notice] = "Registration Successful, you can login when account is activated"
+        redirect_to login_url
       else
-        render :new 
+        render :new
         @user.errors
       end
     else

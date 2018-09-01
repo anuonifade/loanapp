@@ -1,7 +1,7 @@
 class DashboardsController < ApplicationController
   include DashboardsHelper
   before_action :total_contribution, :monthly_contribution, :total_loan, :monthly_loan_repayment, only: [:index]
-  
+
   def index
     if profile_presence?
       unless admin?

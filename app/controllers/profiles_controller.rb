@@ -3,7 +3,7 @@ class ProfilesController < ApplicationController
   before_action :profile_params, only: [:update_profile]
 
   def show
-    
+
   end
 
   def edit

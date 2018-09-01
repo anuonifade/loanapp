@@ -11,14 +11,14 @@
   </head>
 
   <body>
-    <% if cookies[:user_info] && session[:current_user_info] %>
+    <% if cookies[:user_info] && session[:current_user_info] && @is_user_activated %>
       <%= render("layouts/header") %>
     <% end %>
     <% flash.each do |type, msg| %>
       <%= content_tag :span, msg, class: "#{type}", id: "puffly" %>
     <% end %>
     <%= yield %>
-    <% if cookies[:user_info] && session[:current_user_info] %>
+    <% if cookies[:user_info] && session[:current_user_info] && @is_user_activated %>
       <%= render("layouts/footer") %>
     <% end %>
   </body>
