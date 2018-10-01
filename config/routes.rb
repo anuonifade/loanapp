@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     get "/total-loans" => "admin#total_loans", as: "admin_total_loans"
     get "/all-users" => "admin#all_users", as: "admin_all_users"
     get "/admin-users" => "admin#admin_users", as: "admin_admin_users"
+    get "/toggle_user/:id" => "admin#toggle_user", as: "activate_deactivate_user"
   end
   resources :admin
   resources :contributions
