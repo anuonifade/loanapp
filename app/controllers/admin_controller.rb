@@ -1,12 +1,12 @@
 class AdminController < ApplicationController
   include DashboardsHelper
   before_action :authorize_admin
-
-  def all_users
-    @all_users = User.find_by(role_id: 3)
-  end
+  before_action :set_users
 
   def month_details
+  end
+
+  def all_users
   end
 
   def application_details
@@ -22,9 +22,16 @@ class AdminController < ApplicationController
   end
 
   private
-  def authorize_admin
-    unless admin?
-      redirect dashboard_url, notice: 'You are not authorized to view the page'
+    def set_users
+      @all_users = Profile.all
     end
-  end
+
+    def set_admin_users
+    end
+
+    def authorize_admin
+      unless admin?
+        redirect dashboard_url, notice: 'You are not authorized to view the page'
+      end
+    end
 end
