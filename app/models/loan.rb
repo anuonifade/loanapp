@@ -1,4 +1,5 @@
 class Loan < ApplicationRecord
+  after_create :create_notifications
   belongs_to :profile
   belongs_to :loan_type
 
@@ -18,4 +19,16 @@ class Loan < ApplicationRecord
   enum status: [:rejected, :pending, :approved], _suffix: true
   enum guarantor_one_status: [:rejected, :pending, :approved], _suffix: true
   enum guarantor_two_status: [:rejected, :pending, :approved], _suffix: true
+
+  private
+  def recipients
+    Profile.where('id = ? or id = ?', self.guarantor_one_id, self.guarantor_two_id)
+  end
+
+  def create_notifications
+    recipients.each do |recipient|
+      Notification.create(recipient: recipient, actor: self.profile,
+        action: 'loan application', notifiable: self)
+    end
+  end
 end

@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery with: :exception
   before_action :authenticate
   before_action :redirect_non_activated_user
   after_action :clear_xhr_flash
@@ -34,7 +33,6 @@ class ApplicationController < ActionController::Base
   end
 
   private
-
   def set_user
     @user_id ||= session[:current_user_info]['id']
     @staff_id ||= session[:current_user_info]['username']

@@ -22,7 +22,7 @@ class LoansController < ApplicationController
 
     # Set the user_profile from the session
     @loan[:profile_id] = @user_profile['id']
-    
+
     # Get selected loan type
     selected_loan_type = @loan[:loan_type_id].to_s
 
@@ -30,8 +30,8 @@ class LoansController < ApplicationController
     interest = 0
     amount = @loan[:amount]
     duration = @loan[:duration]
-    @loan[:guarantor_one_approved] = 0
-    @loan[:guarantor_two_approved] = 0
+    @loan[:guarantor_one_status] = 0
+    @loan[:guarantor_two_status] = 0
 
     # verify selected interest
     if selected_loan_type == loan_type[:savings]
@@ -50,12 +50,11 @@ class LoansController < ApplicationController
 
     # Ensure that the duration is valid
     if duration <= 0
-       errors = true
-       flash.now[:alert] = "Kindly select a valid duration"
+      errors = true
+      flash.now[:alert] = "Kindly select a valid duration"
     else
       @loan[:duration] = duration
     end
-
 
     # Calculate monthly deductions and yearly_deduction
     if selected_loan_type == loan_type[:housing]
@@ -81,9 +80,10 @@ class LoansController < ApplicationController
     end
   end
 
-  
-
   private
+    def profile
+      @user_profile.loan
+    end
 
     def loan_params
       params.require(:loan).permit(
@@ -94,5 +94,4 @@ class LoansController < ApplicationController
     def get_loan_applications
       @all_loan_applications = Loan.where("profile_id = ?", @user_profile.id).all
     end
-
 end
