@@ -33,6 +33,7 @@
 
 body {
   font-weight: 400;
+  font-size: 15px;
 }
 
 html,
@@ -108,4 +109,8 @@ body,
 .select2-container--bootstrap .select2-selection--single .select2-selection__rendered {
   padding-top: 2px;
   color: #333;
+}
+
+.profile-content li {
+  padding: 5px;
 }
