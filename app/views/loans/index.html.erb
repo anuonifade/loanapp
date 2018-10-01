@@ -102,6 +102,23 @@
                       <p id="yearly-payment-word" class="form-text text-muted price-in-word"></p>
                     </div>
                   </div>
+
+                  <%# Upload Current Payslip %>
+                  <div id="yearly-payment-block" class="form-group row">
+                    <label class="col-sm-4 col-4 col-form-label">Upload Current Payslip</label>
+                    <div class="col-sm-7 col-8">
+                      <%= f.file_field :payslip %>
+                    </div>
+                  </div>
+
+                   <%# Upload ID Card %>
+                  <div id="yearly-payment-block" class="form-group row">
+                    <label class="col-sm-4 col-4 col-form-label">Upload ID Card</label>
+                    <div class="col-sm-7 col-8">
+                      <%= f.file_field :id_card %>
+                    </div>
+                  </div>
+
                 </div>
 
                 <%# Guarantor 1 %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180930203951) do
+ActiveRecord::Schema.define(version: 20181001133415) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,6 +76,8 @@ ActiveRecord::Schema.define(version: 20180930203951) do
     t.integer "guarantor_one_status", default: 1
     t.integer "guarantor_two_status", default: 1
     t.integer "status", default: 1
+    t.string "payslip"
+    t.string "id_card"
     t.index ["loan_type_id"], name: "index_loans_on_loan_type_id"
     t.index ["profile_id"], name: "index_loans_on_profile_id"
   end
