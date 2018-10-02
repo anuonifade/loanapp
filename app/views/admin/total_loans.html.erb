@@ -38,8 +38,8 @@
                         <td width="12%"><%= each_loan.amount %></td>
                         <td width="12%"><%= each_loan.status %></td>
                         <td width="12%"><%= each_loan.finished_payment %></td>
-                        <td width="15%"><%= getUserFullName(each_loan.guarantor_one_id) %></td>
-                        <td width="15%"><%= getUserFullName(each_loan.guarantor_two_id) %></td>
+                        <td width="15%"><%= user_fullname(each_loan.guarantor_one_id) %></td>
+                        <td width="15%"><%= user_fullname(each_loan.guarantor_two_id) %></td>
                         <td class="text-center" width="15%">
                           <% if loan_approved?(each_loan.status, each_loan.guarantor_one_status, each_loan.guarantor_two_status)%>
                             <%= link_to approve_loan_path(each_loan.id), class: "btn btn-success" do %>

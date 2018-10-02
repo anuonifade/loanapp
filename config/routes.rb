@@ -33,6 +33,8 @@ Rails.application.routes.draw do
   get 'messages' => 'notifications#messages'
   get 'support' => 'supports#index'
   post 'profiles/:id/edit' => 'profiles#update_profile'
+  get 'clear-balance/:id/deposit' => 'loan#clear_balance_by_deposit', as: 'clear_loan_deposit'
+  get 'clear-balance/:id/savings' => 'loan#clear_balance_by_savings', as: 'clear_loan_savings'
 
   controller :sessions do
     get 'login' => :new

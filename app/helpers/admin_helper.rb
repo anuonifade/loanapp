@@ -1,5 +1,5 @@
 module AdminHelper
-  def getUserFullName(profile_id)
+  def user_fullname(profile_id)
     profile = Profile.find(profile_id)
     profile.firstname + ' ' + profile.lastname
   end

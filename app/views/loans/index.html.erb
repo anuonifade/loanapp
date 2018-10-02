@@ -214,10 +214,9 @@
                     <td><%= la[:status] %></td>
                     <td><%= la[:created_at] %></td>
                     <td class="text-center">
-                      <a href=#>View</a> 
+                      <%= link_to loan_path(la[:id]) do %>View<% end %>
                       <% if la[:status] == 'pending' %> 
-                        | <a href=#>Edit</a> | 
-                        <a href=#>Delete</a>
+                        | <%= link_to edit_loan_path(la[:id]) do %>Edit<% end %>
                       <% end %>
                     </td>
                   </tr>
