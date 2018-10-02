@@ -36,6 +36,7 @@ class ApplicationController < ActionController::Base
   def set_user
     @user_id ||= session[:current_user_info]['id']
     @staff_id ||= session[:current_user_info]['username']
+    @user_role ||= session[:current_user_info]['role']
     @user_email ||= session[:current_user_info]['email']
     @user = session[:current_user_info] 
     @is_user_activated = session[:current_user_info]['activated'] ? true : false

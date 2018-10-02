@@ -2,12 +2,31 @@ class AdminController < ApplicationController
   include DashboardsHelper
   before_action :authorize_admin
   before_action :set_users
+  before_action :set_all_loan_app, only: [:total_loans]
+  before_action :set_all_total_loan
   before_action :set_inactive_users, only: [:application_details]
 
   def month_details
   end
 
   def all_users
+  end
+
+  def approve_loan
+    loan = Loan.find(params[:loan_id])
+    approved_by = User.find(@user_id)
+    loan_updated = loan.update_columns(status: 2, approved_date: Time.now, approved_by: approved_by)
+    redirect_to :action => "total_loans" if loan_updated
+  end
+
+  def loan_details
+  end
+
+  def decline_loan
+    loan = Loan.find(params[:loan_id])
+    approved_by = User.find(@user_id)
+    loan_updated = loan.update_columns(status: 3, approved_date: Time.now, approved_by: approved_by)
+    redirect_to :action => "total_loans" if loan_updated
   end
 
   def application_details
@@ -34,11 +53,22 @@ class AdminController < ApplicationController
       @all_users = User.joins(:profile).where(role_id: 3).all
     end
 
+    def set_all_loan_app
+      @all_loan_app = Loan.all
+    end
+
     def set_inactive_users
       @inactive_users = User.all
     end
 
+    def set_all_total_loan
+      @total_pending_loan = Loan.where(status: 'pending').sum(:amount)
+      @total_approved_loan = Loan.where(status: 'approved').sum(:amount)
+      @total_declined_loan = Loan.where(status: 'rejected').sum(:amount)
+    end
+
     def set_admin_users
+      @all_admin_users = User.joins(:profile).where(role_id: 2).all
     end
 
     def authorize_admin
