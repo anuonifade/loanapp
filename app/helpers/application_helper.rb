@@ -14,6 +14,12 @@ module ApplicationHelper
     </li>".html_safe
   end
 
+  def admin?
+    user_role = User.find(@user_id)
+    return true if user_role.role_id < 3
+    false
+  end
+
   def flash_class(level)
     case level
       when "notice" then "alert alert-info"

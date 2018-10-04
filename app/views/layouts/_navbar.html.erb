@@ -9,7 +9,7 @@
   <% end %>
 <% else %>
   <%= navigation_menu('Home', root_path, 'home') %>
-  <%= navigation_menu('Loan Application', loans_path, 'calendar') %>
-  <%= navigation_menu('Monthly Contribution', contributions_path, 'calendar') %>
-  <%= navigation_menu('Loan Repayment', root_path, 'calendar') %>
+  <%= navigation_menu('Loan Applications', loans_path, 'calendar') %>
+  <%= navigation_menu('Monthly Contributions', contributions_path, 'calendar') %>
+  <%= navigation_menu('Active Loans', all_loans_path, 'calendar') %>
 <% end %>

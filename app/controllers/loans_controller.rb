@@ -12,6 +12,9 @@ class LoansController < ApplicationController
     @total_contributions = Contribution.where(id: user_id).sum(:amount)
   end
 
+  def all_loans
+  end
+
   def index
     load_initial
     @loan = Loan.new
@@ -19,6 +22,7 @@ class LoansController < ApplicationController
 
   def show
     @loan_detail = Loan.find(params[:id])
+    @loan_repayment = LoanRepayment.find_by(loan_id: params[:id])
   end
 
   def create

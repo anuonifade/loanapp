@@ -3,7 +3,6 @@ class ProfilesController < ApplicationController
   before_action :profile_params, only: [:update_profile]
 
   def show
-
   end
 
   def edit
@@ -18,10 +17,10 @@ class ProfilesController < ApplicationController
 
   def update_profile
     if @profile
-      @profile = Profile.find_by(user_id: @user_id)
-      if @profile.update(profile_params)
-        @profile.save
-        redirect_to controller: 'profiles', action: 'show', id: @user_id
+      profile = Profile.find_by(user_id: params[:id])
+      if profile.update(profile_params)
+        profile.save
+        redirect_to action: 'show', id: params[:id]
       else
         render :edit
       end
@@ -41,16 +40,28 @@ class ProfilesController < ApplicationController
 
   private
 
-    def set_profile
-      @profile = Profile.find_by(user_id: @user_id) || nil
-    end
+  def set_profile
+    user_id = @user_id
+    user = User.find(@user_id)
+    user_id = params[:id] if params[:id] && user.role_id < 3
+    @profile = Profile.find_by(user_id: user_id) || nil
 
-    def profile_params
-      params.require(:profile).permit(
-        Profile.new.attributes.keys.map(&:to_sym),
-        bank_detail_attributes: [:account_name, :account_number, :bank_name, :sort_code],
-        next_of_kin_attributes: [:first_name, :last_name, :email, :phone, :relationship, :address1, :address2, :city, :state, :nationality]
-      )
+    @thrift_account = @staff_id
+    @thrift_email = @user_email
+    @thrift_id = @user_id
+    if params[:id] && user.role_id < 3
+      user = User.find(params[:id])
+      @thrift_account = user.username
+      @thrift_email = user.email
+      @thrift_id = user.id
     end
+  end
 
+  def profile_params
+    params.require(:profile).permit(
+      Profile.new.attributes.keys.map(&:to_sym),
+      bank_detail_attributes: [:account_name, :account_number, :bank_name, :sort_code],
+      next_of_kin_attributes: [:first_name, :last_name, :email, :phone, :relationship, :address1, :address2, :city, :state, :nationality]
+    )
+  end
 end

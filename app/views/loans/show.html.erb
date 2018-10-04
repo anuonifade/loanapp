@@ -55,57 +55,80 @@
                 </tr>
                 <tr>
                   <td>Guarantor 1</td>
-                  <td class="text-right"><%= guarantor_fullname(@loan_detail.guarantor_one_id) %> <span class="fa fa-check text-success"></span></td>
+                  <td class="text-right">
+                    <%= guarantor_fullname(@loan_detail.guarantor_one_id) %>
+                    <% if @loan_detail.guarantor_one_status == 'approved' %>
+                      <span class="fa fa-check text-success" data-toggle="tooltip" data-placement="top" title="Approved"></span>
+                    <% elsif @loan_detail.guarantor_one_status == 'pending' %>
+                      <span class="fa fa-spinner text-info" data-toggle="tooltip" data-placement="top" title="Pending"></span>
+                    <% else %>
+                      <span class="fa fa-ban text-danger" data-toggle="tooltip" data-placement="top" title="Rejected"></span>
+                    <% end %>
+                  </td>
                 </tr>
                 <tr>
                   <td>Guarantor 2</td>
-                  <td class="text-right"><%= guarantor_fullname(@loan_detail.guarantor_two_id) %><span class="fa fa-close text-danger"></span></td>
+                  <td class="text-right">
+                    <%= guarantor_fullname(@loan_detail.guarantor_two_id) %>
+                    <% if @loan_detail.guarantor_two_status == 'approved' %>
+                      <span class="fa fa-check text-success" data-toggle="tooltip" data-placement="top" title="Approved"></span>
+                    <% elsif @loan_detail.guarantor_two_status == 'pending' %>
+                      <span class="fa fa-spinner text-info" data-toggle="tooltip" data-placement="top" title="Pending"></span>
+                    <% else %>
+                      <span class="fa fa-ban text-danger" data-toggle="tooltip" data-placement="top" title="Rejected"></span>
+                    <% end %>
+                  </td>
                 </tr>
               </tbody>
             </table>
-            <%= link_to edit_loan_path(@loan_detail.id), class: "btn btn-danger" do %>Edit Loan<% end%>
             <% if @loan_detail.status == 'approved' %>
-              <%= link_to clear_loan_deposit_path(@loan_detail.id) , class: "btn btn-info" do %>Clear Balance By Deposit<% end%>
+              <%= link_to clear_loan_deposit_path(@loan_detail.id), class: "btn btn-info" do %>Clear Balance By Deposit<% end%>
               <%= link_to clear_loan_savings_path(@loan_detail.id), class: "btn btn-success" do %>Clear Balance By Savings<% end%>
+            <% else %>
+              <%= link_to edit_loan_path(@loan_detail.id), class: "btn btn-danger" do %>Edit Loan<% end%>
+            <% end %>
+
+            <% if admin? %>
+              <% if loan_approved?(@loan_detail.status, @loan_detail.guarantor_one_status, @loan_detail.guarantor_two_status)%>
+                <%= link_to approve_loan_path(@loan_detail.id), class: "btn btn-success" do %>
+                  <i class="fa fa-plus"></i> Approve
+                <% end %>
+                <%= link_to decline_loan_path(@loan_detail.id), class: "btn btn-danger" do %>
+                  <i class="fa fa-trash"></i> Reject
+                <% end %>
+              <% end %>
             <% end %>
           </div>
         </section>
       </div>
 
       <div class="col-md-6">
-        <h2 class="page-title">Payment History</h2>
+        <h2 class="page-title">Loan Payment History</h2>
         <div class="card">
+        <% if @loan_repayment.nil? %>
+          <div class="padding10">You do not have any repayment for this loan</div>
+        <% else %>
           <table class="table table-striped">
             <thead>
               <tr>
                 <th class="text-center" width="15%">#</th>
-                <th width="55%">Date</th>
-                <th class="text-center" width="30%">Amount</th>
+                <th width="40%">Month</th>
+                <th width="20%">Year</th>
+                <th class="text-center" width="25%">Amount</th>
               </tr>
             </thead>
             <tbody>
+            <% @loan_repayment.each_with_index do |each_loan, index| %>
               <tr>
-                <th scope="row" class="text-center">1</th>
-                <td>12-07-2017</td>
-                <td class="text-center">15,000</td>
+                <th scope="row" class="text-center"><%= index + 1 %></th>
+                <td width="35%"><%= each_loan.month %></td>
+                <td width="20%"><%= each_loan.year %></td>
+                <td class="text-center" width="25%"><%= each_loan.amount %></td>
               </tr>
-              <tr>
-                <th scope="row" class="text-center">2</th>
-                <td>12-07-2017</td>
-                <td class="text-center">15,000</td>
-              </tr>
-              <tr>
-                <th scope="row" class="text-center">3</th>
-                <td>12-07-2017</td>
-                <td class="text-center">15,000</td>
-              </tr>
-              <tr>
-                <th scope="row" class="text-center">4</th>
-                <td>12-07-2017</td>
-                <td class="text-center">15,000</td>
-              </tr>
+            <% end %>
             </tbody>
           </table>
+        <% end %>
         </div>
       </div>
 

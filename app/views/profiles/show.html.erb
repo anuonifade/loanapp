@@ -13,7 +13,7 @@
             <%= @profile.firstname %> <%= @profile.lastname %> <br>
             <small class="text-muted"><%= @profile.phone %></small>
           </h5>
-          <%= link_to edit_profile_path(@user_id), class: "btn btn-danger" do %>
+          <%= link_to edit_profile_path(@thrift_id), class: "btn btn-danger" do %>
             <span class="fa fa-user"></span> Edit Profile
           <% end %>
          </div>
@@ -25,7 +25,7 @@
                 <tbody>
                   <tr>
                     <td>Thrift Account</td>
-                    <td><%= @staff_id %></td>
+                    <td><%= @thrift_account %></td>
                   </tr>
                   <tr>
                     <td>Full Name</td>
@@ -33,7 +33,7 @@
                   </tr>
                   <tr>
                     <td>Email</td>
-                    <td><%= @user_email %></td>
+                    <td><%= @thrift_email %></td>
                   </tr>
                   <tr>
                     <td>Phone</td>

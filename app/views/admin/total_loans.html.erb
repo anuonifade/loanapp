@@ -32,11 +32,11 @@
                       <tr>
                         <td class="text-center" width="4%"><%= index + 1 %></td>
                         <td width="6%">
-                          <%= link_to view_loan_details_path(each_loan.id) do %>Details<% end %>
+                          <%= link_to loan_path(each_loan.id) do %>Details<% end %>
                         </td>
                         <td width="12%"><%= each_loan.created_at.to_date %></td>
                         <td width="12%"><%= each_loan.amount %></td>
-                        <td width="12%"><%= each_loan.status %></td>
+                        <td width="12%"><span class="text-danger"><%= each_loan.status.upcase %></span></td>
                         <td width="12%"><%= each_loan.finished_payment %></td>
                         <td width="15%"><%= user_fullname(each_loan.guarantor_one_id) %></td>
                         <td width="15%"><%= user_fullname(each_loan.guarantor_two_id) %></td>
