@@ -35,7 +35,7 @@
             <div class="form-group row">
               <div class="col-12">
                 <div class="pull-right">
-                  <a href="#" class="forgot-password label-text"><i class="fa fa-lock"></i> Forgot your password?</a>
+                  <%= link_to password_reset_path, class: "forgot-password label-text" do %><i class="fa fa-lock"></i> Forgot your password?<% end %>
                 </div>
                 <div class="checkbox checkbox-custom other-fields">
                   <input id="checkbox-signup" type="checkbox">

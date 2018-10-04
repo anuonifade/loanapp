@@ -36,6 +36,7 @@ Rails.application.routes.draw do
   get 'clear-balance/:id/deposit' => 'loan#clear_balance_by_deposit', as: 'clear_loan_deposit'
   get 'clear-balance/:id/savings' => 'loan#clear_balance_by_savings', as: 'clear_loan_savings'
   get 'all-loans' => 'loan#all_loan', as: 'all_loans'
+  get 'password-reset' => 'sessions#password_reset', as: 'password_reset'
 
   controller :sessions do
     get 'login' => :new

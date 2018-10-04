@@ -5,6 +5,9 @@ class SessionsController < ApplicationController
     redirect_to root_url if session[:current_user_info] && activated?
   end
 
+  def password_reset
+  end
+
   def create
     user_param = params[:email]
     user = User.find_by(["email = ? or username = ?", user_param, user_param])
