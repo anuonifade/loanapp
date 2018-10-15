@@ -41,5 +41,11 @@ class ApplicationController < ActionController::Base
     @user = session[:current_user_info]
     @is_user_activated = session[:current_user_info]['activated'] ? true : false
     @user_profile ||= Profile.find_by(user_id: @user_id)
+
+    if @user_profile && @user_profile.passport_url
+      @profile_image = @user_profile.passport_url
+    else
+      @profile_image = 'http://res.cloudinary.com/dzwafstu3/image/upload/v1505747865/nnpc/loan-user.png'
+    end
   end
 end

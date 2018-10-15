@@ -1,9 +1,9 @@
 <% if admin? %>
   <%= navigation_menu('Home', admin_index_path, 'home') %>
-  <%= navigation_menu('New Users', admin_application_details_path, 'calendar') %>
+  <%= navigation_menu('All Users', admin_application_details_path, 'calendar') %>
   <%= navigation_menu('Manage Loans', admin_total_loans_path, 'circle-o') %>
   <%= navigation_menu('Manage Contributions', admin_total_contributions_path, 'calendar') %>
-  <%= navigation_menu('Manage Users', admin_all_users_path, 'users') %>
+  <%= navigation_menu('Manage Profiles', admin_all_users_path, 'users') %>
   <% if super_admin? %>
     <%= navigation_menu('Manage Admins', admin_admin_users_path, 'users') %>
   <% end %>

@@ -1,11 +1,15 @@
+<div id="modal-holder"></div>
 <section class="main-content">
   <div class="container">
     <h2 class="page-title">Profile Page</h2>
+    <%= render 'layouts/alerts' %>
     <div class="card">
       <div class="card-body p-lg">
        <div class="row">
          <div class="col-sm-4 profile-image text-center">
-          <img src="https://opennebula.org/wp-content/uploads/2017/01/placeholder.jpg" height="200" alt="" class="rounded-circle">
+          <a href="#" data-toggle= "modal" data-target= "#uploadPassportModal">
+            <img src="<%= @image_src %>" height="200" alt="" class="rounded-circle">
+          </a>
           <br>
           <small class="text-dimmed">Click on image to change</small>
           <br>

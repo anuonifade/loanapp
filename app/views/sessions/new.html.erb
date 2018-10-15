@@ -4,13 +4,13 @@
       <div class="text-center">
         <%= image_tag "logo.png", alt: "NNPC Depot Logo", height: "40", class: "login-logo"  %>
       </div>
+      <div class="flash-message">
+        <% if flash[:notice] %>
+          <%= content_tag :span, flash[:notice], class: "notice", id: "puffly" %>
+        <% end %>
+      </div>
 
       <div class="card">
-        <div class="flash-message">
-          <% if flash[:notice] %>
-            <%= content_tag :span, flash[:notice], class: "notice", id: "puffly" %>
-          <% end %>
-        </div>
         <div class="login-signin">
           <div class="row">
             <div class="col-12 text-center">

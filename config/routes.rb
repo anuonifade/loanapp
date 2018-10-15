@@ -42,6 +42,7 @@ Rails.application.routes.draw do
   post 'password-reset' => 'sessions#password_reset_email', as: 'password_reset_email'
   get 'resend-reset-email' => 'sessions#resend_reset_email', as: 'resend_password_reset_email'
   post 'change-password' => 'sessions#change_password', as: 'change_password'
+  post 'profiles/upload-passport' => 'profiles#upload_passport', as: 'upload_passport'
 
   controller :sessions do
     get 'login' => :new

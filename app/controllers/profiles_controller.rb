@@ -15,6 +15,18 @@ class ProfilesController < ApplicationController
     end
   end
 
+  def upload_passport
+    passport_url = Cloudinary::Uploader.upload(params[:profile_passport])['url']
+    user = User.find(params[:thrift_id])
+    if user.profile.update(passport_url: passport_url)
+      @image_src = passport_url
+      redirect_to action: 'show', id: user.id, alert: 'Passport uploaded successfully'
+    else
+      @image_src = 'https://opennebula.org/wp-content/uploads/2017/01/placeholder.jpg'
+      redirect_to action: 'show', id: user.id, alert: 'Unable to upload passport'
+    end
+  end
+
   def update_profile
     if @profile
       profile = Profile.find_by(user_id: params[:id])
@@ -49,6 +61,12 @@ class ProfilesController < ApplicationController
     @thrift_account = @staff_id
     @thrift_email = @user_email
     @thrift_id = @user_id
+    if @profile && @profile.passport_url
+      @image_src = @profile.passport_url
+    else
+      @image_src = 'https://opennebula.org/wp-content/uploads/2017/01/placeholder.jpg'
+    end
+
     if params[:id] && user.role_id < 3
       user = User.find(params[:id])
       @thrift_account = user.username

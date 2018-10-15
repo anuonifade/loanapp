@@ -11,6 +11,7 @@
   </head>
 
   <body>
+    <%= render "layouts/modal", user: @user%>
     <% if cookies[:user_info] && session[:current_user_info] && @is_user_activated %>
       <%= render("layouts/header") %>
     <% end %>
