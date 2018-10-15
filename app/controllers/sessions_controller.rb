@@ -48,6 +48,7 @@ class SessionsController < ApplicationController
       saved_token = PasswordReset.new(token: token, email: password_reset_params[:email])
       flash[:notice] = 'Password Reset email has been to your email'
       PasswordResetMailer.with(user: @user).password_reset_email.deliver_later if saved_token.save
+      redirect_to :password_reset, alert: 'Password Reset email Sent'
     else
       flash[:notice] = 'Email does not exist, please contact the admin'
     end
