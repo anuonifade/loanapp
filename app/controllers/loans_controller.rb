@@ -1,7 +1,7 @@
 class LoansController < ApplicationController
   include DashboardsHelper
   before_action :get_loan_applications, only: [:index]
-  before_action :set_cloudinary_config, only: [:create]
+  before_action :check_configuration, only: [:create]
   before_action :profile
 
   def load_initial
@@ -30,8 +30,8 @@ class LoansController < ApplicationController
     loan_type = { savings: '1', housing: '2', cooperative: '3'}
     @loan = Loan.new(loan_params)
 
-    @loan[:payslip] = Cloudinary::Uploader.upload(loan_params[:payslip], set_cloudinary_config)["url"]
-    @loan[:id_card] = Cloudinary::Uploader.upload(loan_params[:id_card], set_cloudinary_config)["url"]
+    @loan[:payslip] = Cloudinary::Uploader.upload(loan_params[:payslip])["url"]
+    @loan[:id_card] = Cloudinary::Uploader.upload(loan_params[:id_card])["url"]
     # Set the user_profile from the session
     @loan[:profile_id] = @user_profile['id']
 
@@ -93,14 +93,9 @@ class LoansController < ApplicationController
   end
 
   private
-    def set_cloudinary_config
-      {
-        cloud_name: 'dzwafstu3',
-        api_key: '951584143551435',
-        api_secret: 'v46DLhkmQqanSNPMg6Fm1Q5diPQ',
-        secure: true,
-        cdn_subdomain: true
-      }
+
+    def check_configuration
+      flash[:error] = 'Missing configuration' if Cloudinary.config.api_key.blank?
     end
 
     def profile

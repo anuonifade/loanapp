@@ -1,0 +1,54 @@
+  <section>
+    <div class="login-box">
+
+      <div class="text-center">
+        <%= image_tag "logo.png", alt: "NNPC Depot Logo", height: "40", class: "login-logo"  %>
+      </div>
+
+      <div class="card">
+        <div class="flash-message">
+          <% if flash[:notice] %>
+            <%= content_tag :span, flash[:notice], class: "notice", id: "puffly" %>
+          <% end %>
+        </div>
+        <div class="login-signin">
+          <div class="row">
+            <div class="col-12 text-center">
+              <h3>Change Password</h3>
+            </div>
+          </div>
+          <% if @token_exist && @token_expired == false %>
+            <%= form_with url: change_password_path do |form|%>
+              <%= form.hidden_field :email, value: @password_reset.email %>
+              <%= form.hidden_field :token, value: @password_reset.token %>
+              <div class="form-group row">
+                <div class="col-12">
+                  <%= form.password_field :password, class: "form-control", placeholder: "New Password", required: true, autofocus: true %>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <div class="col-12">
+                  <%= form.password_field :confirm_password, class: "form-control", placeholder: "Password Confirmation", required: true %>
+                </div>
+              </div>
+
+              <div class="form-group text-center row mt-2">
+                <div class="col-12">
+                  <%= form.submit "Change Password", :class => "btn btn-block btn-info" %>
+                </div>
+              </div>
+            <% end %>
+          <% elsif @token_exist && @token_expired %>
+            <div class="padding10">Your password reset link has expired, 
+              <%= link_to password_reset_path, class: 'register-now label-text' do %>click here<% end %> to resend another email
+            </div>
+          <% else %>
+            <div class="padding10">Your link is not valid, 
+              <%= link_to password_reset_path, class: 'register-now label-text' do %>click here<% end %> to send password reset link to your email
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </section>

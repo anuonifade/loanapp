@@ -9,6 +9,19 @@ Rails.application.configure do
   # Do not eager load code on boot.
   config.eager_load = false
 
+  # Set SMTP mailing configuration
+  config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.gmail.com',
+    domain: 'mail.google.com',
+    port: 587,
+    user_name: ENV['DEFAULT_EMAIL'],
+    password: ENV['EMAIL_PASSWORD'],
+    authentication: 'plain',
+    enable_starttls_auto: true
+  }
+
   # Show full error reports.
   config.consider_all_requests_local = true
 

@@ -38,7 +38,7 @@ class ApplicationController < ActionController::Base
     @staff_id ||= session[:current_user_info]['username']
     @user_role ||= session[:current_user_info]['role']
     @user_email ||= session[:current_user_info]['email']
-    @user = session[:current_user_info] 
+    @user = session[:current_user_info]
     @is_user_activated = session[:current_user_info]['activated'] ? true : false
     @user_profile ||= Profile.find_by(user_id: @user_id)
   end
