@@ -29,6 +29,22 @@ class AdminController < ApplicationController
     redirect_to :action => "total_loans" if loan_updated
   end
 
+  def upload_users_csv
+    User.import(params[:file])
+    redirect_to :action => 'application_details', notice: 'Users uploaded Successfully'
+  end
+
+  def add_users
+  end
+
+  def download_users_csv
+    @users = User.all
+    respond_to do |format|
+      format.html
+      format.csv { send_data @users.to_csv, filename: "users-#{Time.now}.csv"}
+    end
+  end
+
   def application_details
   end
 
@@ -58,7 +74,7 @@ class AdminController < ApplicationController
     end
 
     def set_inactive_users
-      @inactive_users = User.all
+      @inactive_users = User.where('role_id > 2').all
     end
 
     def set_all_total_loan

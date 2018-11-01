@@ -1,0 +1,23 @@
+<div class="modal fade" id="uploadUsersModal" tabindex="-1" role="dialog" aria-labelledby="uploadUsersCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="upload-user-title">Upload Users(csv)</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <%= form_with url: admin_upload_users_csv_path, id: 'uploaduser', multipart: true do |form|%>
+        <div class="modal-body text-center">
+          <div>
+              <%= form.file_field :users_csv, class: 'form-control-file', id: 'users-csv-file', accept: '.csv' %>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="upload-users">Upload User</button>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -7,19 +7,20 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body text-center">
-        <div id="upload-message"></div>
-        <div><img src="https://opennebula.org/wp-content/uploads/2017/01/placeholder.jpg" height="200" alt="" class="rounded-circle" id="rounded-circle"></div>
       <%= form_with url: upload_passport_path do |form|%>
-        <%= form.hidden_field :thrift_id, value: @thrift_id %>
-        <div>
-            <%= form.file_field :profile_passport, class: 'form-control-file', id: 'passport-file', accept: 'image/*' %>
+        <div class="modal-body text-center">
+          <div id="upload-message"></div>
+          <div><img src="https://opennebula.org/wp-content/uploads/2017/01/placeholder.jpg" height="200" alt="" class="rounded-circle" id="rounded-circle"></div>
+        
+          <%= form.hidden_field :thrift_id, value: @thrift_id %>
+          <div>
+              <%= form.file_field :profile_passport, class: 'form-control-file', id: 'passport-file', accept: 'image/*' %>
+          </div>
         </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary" id="upload-image">Upload Image</button>
-      </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary" id="upload-image">Upload Image</button>
+        </div>
       <% end %>
     </div>
   </div>

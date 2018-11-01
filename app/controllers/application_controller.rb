@@ -33,6 +33,7 @@ class ApplicationController < ActionController::Base
   end
 
   private
+  
   def set_user
     @user_id ||= session[:current_user_info]['id']
     @staff_id ||= session[:current_user_info]['username']

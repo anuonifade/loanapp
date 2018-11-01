@@ -1,6 +1,28 @@
+<%= flash[:notice] %>
 <section class="main-content">
   <div class="container">
-    <h2 class="page-title">Active/Inactive Users</h2>
+    <div class="col-sm-12">
+      <div class="col-sm-6">
+        <h2 class="page-title">Active/Inactive Users 
+          <%= link_to new_user_path() do%>
+            <button data-toggle="tooltip" data-placement="top" title="Add New User"  class="btn  btn-outline-success btn-round">
+              <span class="fa fa-plus"></span>
+            </button>
+          <% end %>
+          <button data-toggle= "modal" data-target= "#uploadUsersModal" data-placement="top" title="Upload Multiple Users" class="btn  btn-outline-info btn-round">
+            <span class="fa fa-upload"></span>
+          </button>
+          <%= link_to admin_download_users_csv_path(format: 'csv') do%>
+            <button data-toggle="tooltip" data-placement="top" title="Download users (CSV)"  class="btn  btn-outline-danger btn-round">
+              <span class="fa fa-download"></span>
+            </button>
+          <% end %>
+        </h2>
+      </div>
+      <div class="col-sm-6">
+        
+      </div>
+    </div>
     <div class="card">
       <div class="card-body p-lg">
       
@@ -38,6 +60,9 @@
                           Activate
                         <% end %>
                       <% end %>
+                        <%= link_to edit_profile_path(user.id), class: "btn btn-info" do %>
+                          Profile
+                        <% end %>
                       </td>
                     </tr>
                   <% end %>
@@ -47,6 +72,5 @@
             </div>
           </div>
   </div>
-
 </section>
-
+<%= render "layouts/uploadusermodal", user: @user%>
