@@ -5,6 +5,7 @@ class AdminController < ApplicationController
   before_action :set_all_loan_app, only: [:total_loans]
   before_action :set_all_total_loan
   before_action :set_inactive_users, only: [:application_details]
+  before_action :contribution_permitted_params, only: [:new_monthly_contribution]
 
   def month_details
   end
@@ -34,6 +35,11 @@ class AdminController < ApplicationController
     redirect_to :action => 'application_details', notice: 'Users uploaded Successfully'
   end
 
+  def upload_contributions_csv
+    User.import(params[:file])
+    redirect_to :action => 'total_contributions', notice: 'Contributions Uploaded Successfully'
+  end
+
   def add_users
   end
 
@@ -45,10 +51,50 @@ class AdminController < ApplicationController
     end
   end
 
+  def download_contributions_csv
+    @contributions = MonthlyContribution.all
+    respond_to do |format|
+      format.html
+      format.csv { send_data @contributions.to_csv, filename: "users-contributions-#{Time.now}.csv"}
+    end
+  end
+
+  def add_new_monthly_contribution
+    user_id = session[:current_user_info]['id']
+    # Get profile of regular users only excluding the current user
+    @profile = Profile.joins(:user).where("user_id != " + user_id.to_s + " and users.role_id = 3")
+    @recent_contributions = MonthlyContribution.all.order(created_at: :DESC).limit(20)
+    @monthly_contribution = MonthlyContribution.new
+  end
+
+  def new_monthly_contribution
+
+    existing_contribution = MonthlyContribution.find_by(
+                              profile_id: contribution_permitted_params[:profile_id],
+                              month: contribution_permitted_params[:month],
+                              year: contribution_permitted_params[:year]
+                            )
+
+    if existing_contribution
+      flash.now[:alert] = 'Contribution for this month already exist for Contributor'
+    else
+      @new_contribution = MonthlyContribution.new(contribution_permitted_params)
+      if @new_contribution.save
+        redirect_to :action => 'total_contributions', notice: 'Contributions Uploaded Successfully'
+      else
+        flash.now[:error] = 'Unable to Save Monthly Contribution'
+      end
+    end
+  end
+
   def application_details
   end
 
   def total_contributions
+    @total_contribution = MonthlyContribution.all.sum(:amount) || 0.00
+    @total_month_contribution = MonthlyContribution.where('month = ? and year = ?', Date.today.strftime("%m"), Date.today.strftime("%Y")).sum(:amount) || 0.00
+
+    @recent_contributions = MonthlyContribution.all.order(created_at: :DESC).limit(20)
   end
 
   def total_loans
@@ -85,6 +131,10 @@ class AdminController < ApplicationController
 
     def set_admin_users
       @all_admin_users = User.joins(:profile).where(role_id: 2).all
+    end
+
+    def contribution_permitted_params
+      params.require(:monthly_contribution).permit(:profile_id, :amount, :month, :year)
     end
 
     def authorize_admin

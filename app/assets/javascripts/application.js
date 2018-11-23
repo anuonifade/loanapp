@@ -14,7 +14,6 @@
 //= require turbolinks
 //= require ./plugins/jquery
 //= require ./plugins/tether.min
-//= require puffly
 //= require ./plugins/bootstrap.min
 //= require ./plugins/numberToEnglish
 //= require ./plugins/number-divide
@@ -22,3 +21,4 @@
 //= require toastr
 //= require select2
 //= require_directory
+//= require puffly

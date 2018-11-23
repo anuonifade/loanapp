@@ -13,7 +13,12 @@ Rails.application.routes.draw do
     get '/loan-details/:loan_id' => 'admin#loan_details', as: 'view_loan_details'
     get '/reset_password/:id' => 'admin#reset_password', as: 'reset_user_password'
     post '/upload-users' => 'admin#upload_users_csv', as: 'admin_upload_users_csv'
+    post '/upload-monthly-contributions' => 'admin#upload_contributions_csv', as: 'admin_upload_contribution_csv'
     get '/download-users-csv' => 'admin#download_users_csv', as: 'admin_download_users_csv'
+    get '/download-contributions-csv' => 'admin#download_contributions_csv', as: 'admin_download_contributions_csv'
+    get '/add-new-contribution' => 'admin#add_new_monthly_contribution', as: 'new_monthly_contribution'
+    post '/new-contribution' => 'admin#new_monthly_contribution', as: 'admin_new_monthly_contribution'
+
   end
   resources :admin
   resources :contributions
