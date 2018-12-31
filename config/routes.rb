@@ -18,6 +18,9 @@ Rails.application.routes.draw do
     get '/download-contributions-csv' => 'admin#download_contributions_csv', as: 'admin_download_contributions_csv'
     get '/add-new-contribution' => 'admin#add_new_monthly_contribution', as: 'new_monthly_contribution'
     post '/new-contribution' => 'admin#new_monthly_contribution', as: 'admin_new_monthly_contribution'
+    get '/download-loans-csv' => 'admin#download_loans_csv', as: 'admin_download_loans_csv'
+    get '/add-new-loan' => 'admin#add_new_loan', as: 'admin_new_loan'
+    post '/add-new-loan' => 'admin#admin_add_new_loan', as: 'admin_add_new_loan'
 
   end
   resources :admin

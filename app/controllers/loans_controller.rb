@@ -27,7 +27,7 @@ class LoansController < ApplicationController
 
   def create
     # Set available loan_type to a hash
-    loan_type = { savings: '1', housing: '2', cooperative: '3'}
+    loan_type = { savings: '1', housing: '2', cooperative: '3' }
     @loan = Loan.new(loan_params)
 
     @loan[:payslip] = Cloudinary::Uploader.upload(loan_params[:payslip])["url"]

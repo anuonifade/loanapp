@@ -59,12 +59,41 @@ class AdminController < ApplicationController
     end
   end
 
+  def download_loans_csv
+    @loans = LoanRepayment.all
+    respond_to do |format|
+      format.html
+      format.csv { send_data @loans.to_csv, filename: "users-loans-#{Time.now}.csv"}
+    end
+  end
+
   def add_new_monthly_contribution
     user_id = session[:current_user_info]['id']
     # Get profile of regular users only excluding the current user
     @profile = Profile.joins(:user).where("user_id != " + user_id.to_s + " and users.role_id = 3")
     @recent_contributions = MonthlyContribution.all.order(created_at: :DESC).limit(20)
     @monthly_contribution = MonthlyContribution.new
+  end
+
+  def add_new_loan
+    user_id = session[:current_user_info]['id']
+    # Get profile of regular users only excluding the current user
+    @profile = Profile.joins(:user).where("user_id != " + user_id.to_s + " and users.role_id = 3")
+    @recent_loans_repayment = LoanRepayment.all.order(created_at: :DESC).limit(20)
+    @loan = Loan.new
+    @loan_types = LoanType.all
+  end
+
+  def admin_add_new_loan
+    @new_loan = Loan.new(loan_permitted_params)
+    @new_loan[:payslip] = Cloudinary::Uploader.upload(loan_permitted_params[:payslip])["url"]
+    @new_loan[:id_card] = Cloudinary::Uploader.upload(loan_permitted_params[:id_card])["url"]
+    if @new_loan.save
+      redirect_to :action => 'total_loans', notice: 'Loan Added Successfully'
+    else
+      flash.now[:error] = 'Unable to Save Loan'
+      redirect_to :action => 'total_loans'
+    end
   end
 
   def new_monthly_contribution
@@ -135,6 +164,18 @@ class AdminController < ApplicationController
 
     def contribution_permitted_params
       params.require(:monthly_contribution).permit(:profile_id, :amount, :month, :year)
+    end
+
+    def loan_permitted_params
+      params.require(:loan).permit(
+        :profile_id,
+        :amount,
+        :loan_type_id,
+        :guarantor_one_id,
+        :guarantor_two_id,
+        :payslip,
+        :id_card
+      )
     end
 
     def authorize_admin
