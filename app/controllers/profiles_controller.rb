@@ -57,7 +57,8 @@ class ProfilesController < ApplicationController
     user = User.find(@user_id)
     user_id = params[:id] if params[:id] && user.role_id < 3
     @profile = Profile.find_by(user_id: user_id) || nil
-    @total_contribution = MonthlyContribution.where(profile_id: @profile.id).sum(:amount) || 0.00
+    @total_contribution = 0
+    @total_contribution = MonthlyContribution.where(profile_id: @profile.id).sum(:amount) || 0.00 if @profile
 
     @thrift_account = @staff_id
     @thrift_email = @user_email
