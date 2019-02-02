@@ -21,7 +21,7 @@
             <span class="fa fa-user"></span> Edit Profile
           <% end %>
           <h5 class="primary-header mt-3 mb-3">
-            <%= @total_contribution %> <br>
+            <%= number_to_currency(@total_contribution, precision: 2, unit: '₦') %> <br>
             <small class="text-muted">Total Contribution</small>
           </h5>
          </div>
