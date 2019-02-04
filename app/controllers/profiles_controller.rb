@@ -44,7 +44,7 @@ class ProfilesController < ApplicationController
   def add_user_info(profile_params)
     @profile = Profile.create(profile_params)
     if @profile.errors.empty?
-      redirect_to @profile
+      redirect_to action: 'show', id: params[:id]
     else
       render :edit
     end
