@@ -21,7 +21,7 @@ class LoansController < ApplicationController
   end
 
   def show
-    @loan_detail = Loan.find(params[:id])
+    @loan_detail = Loan.find_by(id: params[:id])
     @loan_repayment = LoanRepayment.find_by(loan_id: params[:id])
   end
 

@@ -17,7 +17,7 @@
                 </tr>
                 <tr>
                   <td>Loan Type</td>
-                  <td class="text-right"><strong><%= loan_type(@loan_detail.loan_type_id) %></strong></td>
+                  <td class="text-right"><strong><%= loan_type(@loan_detail.loan_type_id) unless @loan_detail.blank? %></strong></td>
                 </tr>
                 <tr>
                   <td>Expected amount</td>
@@ -25,15 +25,15 @@
                 </tr>
                 <tr>
                   <td>Amount Paid</td>
-                  <td class="text-right"><strong>&#8358; <%= amount_paid(@loan_detail.id) %></strong></td>
+                  <td class="text-right"><strong>&#8358; <%= amount_paid(@loan_detail.id) unless @loan_detail.blank? %></strong></td>
                 </tr>
                 <tr>
                   <td>Remaining Payment</td>
-                  <td class="text-right">&#8358; <%= @loan_detail.expected_amount - amount_paid(@loan_detail.id) %></td>
+                  <td class="text-right">&#8358; <%= @loan_detail.expected_amount - amount_paid(@loan_detail.id)  unless @loan_detail.blank? %></td>
                 </tr>
                 <tr>
                   <td>Finished Payment</td>
-                  <td class="text-right"><%= @loan_detail.finished_payment %></td>
+                  <td class="text-right"><%= @loan_detail.finished_payment unless @loan_detail.blank? %></td>
                 </tr>
                 <tr>
                   <td>Finished Payment Date</td>
@@ -44,59 +44,65 @@
                 </tr>
                 <tr>
                   <td>Monthly Deduction</td>
-                  <td class="text-right">&#8358; <%= @loan_detail.monthly_deduction %></td>
+                  <td class="text-right">&#8358; <%= @loan_detail.monthly_deduction unless @loan_detail.blank? %></td>
                 </tr>
                 <tr>
                   <td>Yearly Deduction</td>
-                  <td class="text-right"><%= @loan_detail.yearly_deduction %></td>
+                  <td class="text-right"><%= @loan_detail.yearly_deduction unless @loan_detail.blank? %></td>
                 </tr>
                 <tr>
                   <td class="transparent-header" colspan="2"><h5>Guarantors</h5></td>
                 </tr>
                 <tr>
                   <td>Guarantor 1</td>
-                  <td class="text-right">
-                    <%= guarantor_fullname(@loan_detail.guarantor_one_id) %>
-                    <% if @loan_detail.guarantor_one_status == 'approved' %>
-                      <span class="fa fa-check text-success" data-toggle="tooltip" data-placement="top" title="Approved"></span>
-                    <% elsif @loan_detail.guarantor_one_status == 'pending' %>
-                      <span class="fa fa-spinner text-info" data-toggle="tooltip" data-placement="top" title="Pending"></span>
-                    <% else %>
-                      <span class="fa fa-ban text-danger" data-toggle="tooltip" data-placement="top" title="Rejected"></span>
-                    <% end %>
-                  </td>
+                  <% unless @loan_detail.blank? %>
+                    <td class="text-right">
+                      <%= guarantor_fullname(@loan_detail.guarantor_one_id) %>
+                      <% if @loan_detail.guarantor_one_status == 'approved' %>
+                        <span class="fa fa-check text-success" data-toggle="tooltip" data-placement="top" title="Approved"></span>
+                      <% elsif @loan_detail.guarantor_one_status == 'pending' %>
+                        <span class="fa fa-spinner text-info" data-toggle="tooltip" data-placement="top" title="Pending"></span>
+                      <% else %>
+                        <span class="fa fa-ban text-danger" data-toggle="tooltip" data-placement="top" title="Rejected"></span>
+                      <% end %>
+                    </td>
+                  <% end %>
                 </tr>
                 <tr>
                   <td>Guarantor 2</td>
-                  <td class="text-right">
-                    <%= guarantor_fullname(@loan_detail.guarantor_two_id) %>
-                    <% if @loan_detail.guarantor_two_status == 'approved' %>
-                      <span class="fa fa-check text-success" data-toggle="tooltip" data-placement="top" title="Approved"></span>
-                    <% elsif @loan_detail.guarantor_two_status == 'pending' %>
-                      <span class="fa fa-spinner text-info" data-toggle="tooltip" data-placement="top" title="Pending"></span>
-                    <% else %>
-                      <span class="fa fa-ban text-danger" data-toggle="tooltip" data-placement="top" title="Rejected"></span>
-                    <% end %>
-                  </td>
+                  <% unless @loan_detail.blank? %>
+                    <td class="text-right">
+                      <%= guarantor_fullname(@loan_detail.guarantor_two_id) %>
+                      <% if @loan_detail.guarantor_two_status == 'approved' %>
+                        <span class="fa fa-check text-success" data-toggle="tooltip" data-placement="top" title="Approved"></span>
+                      <% elsif @loan_detail.guarantor_two_status == 'pending' %>
+                        <span class="fa fa-spinner text-info" data-toggle="tooltip" data-placement="top" title="Pending"></span>
+                      <% else %>
+                        <span class="fa fa-ban text-danger" data-toggle="tooltip" data-placement="top" title="Rejected"></span>
+                      <% end %>
+                    </td>
+                  <% end %>
                 </tr>
               </tbody>
             </table>
             <h3> Clear Balance </h3>
             <hr />
-            <% if @loan_detail.status == 'approved' %>
-              <%= link_to clear_loan_deposit_path(@loan_detail.id), class: "btn btn-info" do %>By Deposit<% end %>
-              <%= link_to clear_loan_savings_path(@loan_detail.id), class: "btn btn-success" do %>By Savings<% end %>
-            <% else %>
-              <%= link_to edit_loan_path(@loan_detail.id), class: "btn btn-danger" do %>Edit Loan<% end%>
-            <% end %>
+            <% unless @loan_detail.blank? %>
+              <% if @loan_detail.status == 'approved' %>
+                <%= link_to clear_loan_deposit_path(@loan_detail.id), class: "btn btn-info" do %>By Deposit<% end %>
+                <%= link_to clear_loan_savings_path(@loan_detail.id), class: "btn btn-success" do %>By Savings<% end %>
+              <% else %>
+                <%= link_to edit_loan_path(@loan_detail.id), class: "btn btn-danger" do %>Edit Loan<% end%>
+              <% end %>
 
-            <% if admin? %>
-              <% if loan_approved?(@loan_detail.status, @loan_detail.guarantor_one_status, @loan_detail.guarantor_two_status)%>
-                <%= link_to approve_loan_path(@loan_detail.id), class: "btn btn-success" do %>
-                  <i class="fa fa-plus"></i> Approve
-                <% end %>
-                <%= link_to decline_loan_path(@loan_detail.id), class: "btn btn-danger" do %>
-                  <i class="fa fa-trash"></i> Reject
+              <% if admin? %>
+                <% if loan_approved?(@loan_detail.status, @loan_detail.guarantor_one_status, @loan_detail.guarantor_two_status)%>
+                  <%= link_to approve_loan_path(@loan_detail.id), class: "btn btn-success" do %>
+                    <i class="fa fa-plus"></i> Approve
+                  <% end %>
+                  <%= link_to decline_loan_path(@loan_detail.id), class: "btn btn-danger" do %>
+                    <i class="fa fa-trash"></i> Reject
+                  <% end %>
                 <% end %>
               <% end %>
             <% end %>
