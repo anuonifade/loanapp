@@ -81,9 +81,11 @@
                 </tr>
               </tbody>
             </table>
+            <h3> Clear Balance </h3>
+            <hr />
             <% if @loan_detail.status == 'approved' %>
-              <%= link_to clear_loan_deposit_path(@loan_detail.id), class: "btn btn-info" do %>Clear Balance By Deposit<% end%>
-              <%= link_to clear_loan_savings_path(@loan_detail.id), class: "btn btn-success" do %>Clear Balance By Savings<% end%>
+              <%= link_to clear_loan_deposit_path(@loan_detail.id), class: "btn btn-info" do %>By Deposit<% end %>
+              <%= link_to clear_loan_savings_path(@loan_detail.id), class: "btn btn-success" do %>By Savings<% end %>
             <% else %>
               <%= link_to edit_loan_path(@loan_detail.id), class: "btn btn-danger" do %>Edit Loan<% end%>
             <% end %>

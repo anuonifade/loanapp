@@ -7,14 +7,22 @@
       <div class="col-md-6">
         <%= link_to contributions_path, class: "card tiles red big" do %>
           <div class="card-body">
-            <h3 class="card-title"> &#8358; <%= to_currency(@total_contribution + @total_loan_repayment) %></h3>
+            <% if @total_contribution && @total_loan_repayment %>
+              <h3 class="card-title"> &#8358; <%= to_currency(@total_contribution + @total_loan_repayment) %></h3>
+            <% else %>
+              <h3 class="card-title"> &#8358; <%= to_currency(0) %></h3>
+            <% end %>
             <h4 class="card-subtitle mb-3">Total Contributions</h4>
             <hr>
             <table class="table">
               <tbody>
                 <tr>
                   <td>Total Contribution</td>
-                  <td class="text-right">&#8358; <%= to_currency(@total_contribution + @total_loan_repayment) %></td>
+                   <% if @total_contribution && @total_loan_repayment %>
+                    <td class="text-right">&#8358; <%= to_currency(@total_contribution + @total_loan_repayment) %></td>
+                  <% else %>
+                    <td class="text-right">&#8358; <%= to_currency(0) %></td>
+                  <% end %>
                 </tr>
                 <tr>
                   <td>Total Loan</td>
