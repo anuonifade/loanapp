@@ -6,7 +6,7 @@
         <section class="card card-money">
           <div class="card-body">
             <div class="card-gray">
-              <h2>&#8358; <%= @loan_detail.amount %></h2>
+              <h2>&#8358; <%= to_currency(@loan_detail.amount) unless @loan_detail.blank?  %></h2>
               <p>Status: <%= @loan_detail.status %> </p>
             </div>
                             
@@ -21,15 +21,15 @@
                 </tr>
                 <tr>
                   <td>Expected amount</td>
-                  <td class="text-right"><strong>&#8358; <%= @loan_detail.expected_amount %></strong></td>
+                  <td class="text-right"><strong>&#8358; <%= to_currency(@loan_detail.expected_amount) %></strong></td>
                 </tr>
                 <tr>
                   <td>Amount Paid</td>
-                  <td class="text-right"><strong>&#8358; <%= amount_paid(@loan_detail.id) unless @loan_detail.blank? %></strong></td>
+                  <td class="text-right"><strong>&#8358; <%= to_currency(amount_paid(@loan_detail.id)) unless @loan_detail.blank? %></strong></td>
                 </tr>
                 <tr>
                   <td>Remaining Payment</td>
-                  <td class="text-right">&#8358; <%= @loan_detail.expected_amount - amount_paid(@loan_detail.id)  unless @loan_detail.blank? %></td>
+                  <td class="text-right">&#8358; <%= to_currency(@loan_detail.expected_amount - amount_paid(@loan_detail.id)) unless @loan_detail.blank? %></td>
                 </tr>
                 <tr>
                   <td>Finished Payment</td>
@@ -44,7 +44,7 @@
                 </tr>
                 <tr>
                   <td>Monthly Deduction</td>
-                  <td class="text-right">&#8358; <%= @loan_detail.monthly_deduction unless @loan_detail.blank? %></td>
+                  <td class="text-right">&#8358; <%= to_currency(@loan_detail.monthly_deduction) unless @loan_detail.blank? %></td>
                 </tr>
                 <tr>
                   <td>Yearly Deduction</td>

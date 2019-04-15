@@ -8,6 +8,10 @@ module LoansHelper
     end
   end
 
+  def to_currency(amount = 0)
+    number_to_currency amount, precision: 2, unit: ""
+  end
+
   def amount_paid(loan_id)
     LoanRepayment.where(loan_id: loan_id).sum(:amount)
   end
